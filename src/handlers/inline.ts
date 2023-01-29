@@ -30,7 +30,7 @@ import {
     VIDEO_URL,
     YT_VIDEO_URL,
     YT_VIDEO_DURATION,
-} from "./../consts";
+} from "./../consts.ts";
 
 const composer = new Composer();
 
