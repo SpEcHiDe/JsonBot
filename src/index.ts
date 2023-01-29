@@ -35,10 +35,13 @@ async function botHoistedApi(
 }
 
 const TG_MAX_MESSAGE_LENGTH = 4096;
+const TG_MAX_CAPTION_LENGTH = 1024;
 
 // MEME RESOURCES
 const STICKER_FILE_ID = "CAADAgADpAwAAqoUyEoBbu6msnyOHAI";
 const STICKER_URL = `https://slow.transload.workers.dev/${STICKER_FILE_ID}/sticker.jpg`;
+const STICKER_WIDTH = 512;
+const STICKER_HEIGHT = 325;
 const SMAII_STICKER_WIDTH = 100;
 const SMAII_STICKER_HEIGHT = 100;
 const SMAII_STICKER_URL = `https://wsrv.nl/?url=${STICKER_URL}&w=${SMAII_STICKER_WIDTH}&h=${SMAII_STICKER_HEIGHT}`;
@@ -132,7 +135,57 @@ export default {
 							thumb_url: SMAII_STICKER_URL,
 							thumb_width: SMAII_STICKER_WIDTH,
 							thumb_height: SMAII_STICKER_HEIGHT,
-						}
+						},
+						{
+							type: "article",
+							id: 2,
+							title: "(string) Title of the result",
+							input_message_content: {
+								phone_number: "+424314159",
+								first_name: "(string) Contact's first name",
+								last_name: "(string) Optional. Contact's last name",
+								vcard: "",
+							},
+							reply_markup: {
+								inline_keyboard: [
+									[
+										{
+											text: "(string) Label text on the button",
+											url: STICKER_URL,
+										}
+									]
+								]
+							},
+							url: STICKER_URL,
+							hide_url: true,
+							description: "(string) Optional. Short description of the result",
+							thumb_url: SMAII_STICKER_URL,
+							thumb_width: SMAII_STICKER_WIDTH,
+							thumb_height: SMAII_STICKER_HEIGHT,
+						},
+						{
+							type: "photo",
+							id: 3,
+							photo_url: STICKER_URL,
+							thumb_url: SMAII_STICKER_URL,
+							photo_width: STICKER_WIDTH,
+							photo_height: STICKER_HEIGHT,
+							title: "(string) Title of the result",
+							description: "(string) Optional. Short description of the result",
+							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
+							parse_mode: "HTML",
+							reply_markup: {
+								inline_keyboard: [
+									[
+										{
+											text: "(string) Label text on the button",
+											url: STICKER_URL,
+										}
+									]
+								]
+							},
+							// input_message_content:
+						},
 					],
 					cache_time: 300,
 					is_personal: true,
