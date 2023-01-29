@@ -63,7 +63,7 @@ export default {
 							botToken,
 							"sendMessage",
 							{
-								text: onemsg,
+								text: `<pre><code class="language-json">${onemsg}</code></pre>`,
 								chat_id: update[updateType].from.id,
 								reply_to_message_id: update[updateType].message_id,
 								parse_mode: "HTML",
