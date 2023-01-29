@@ -112,7 +112,7 @@ export default {
 							id: 1,
 							title: "(string) Title of the result",
 							input_message_content: {
-								message_text: "Text of the message to be sent, 1-4096 characters",
+								message_text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
 								parse_mode: "HTML",
 								disable_web_page_preview: false,
 							},
