@@ -45,6 +45,20 @@ const STICKER_HEIGHT = 325;
 const SMAII_STICKER_WIDTH = 100;
 const SMAII_STICKER_HEIGHT = 100;
 const SMAII_STICKER_URL = `https://wsrv.nl/?url=${STICKER_URL}&w=${SMAII_STICKER_WIDTH}&h=${SMAII_STICKER_HEIGHT}`;
+const AUDIO_URL = "https://slow.transload.workers.dev/CQACAgQAAx0EYtH4LwABBYFQY9ZZZURV9eQd4i98OMiq6CGXRtcAAmkMAAIRJ7FSKA6JG9b_n54tBA/audio.mp3";
+const GIF_URL = "https://slow.transload.workers.dev/CgACAgQAAx0EYtH4LwABBYGJY9ZeRwWhvRsBkOWwDfzt920wAwADbwwAAhEnsVJBCGoFT-Oz_C0E/animation.gif";
+const GIF_WIDTH = 320;
+const GIF_HEIGHT = 134;
+const GIF_DURATION = 3;
+const GIF_2_URL = "https://slow.transload.workers.dev/CgACAgIAAx0EYtH4LwABBYF8Y9Zc-Yc8FsmaiHNLOXUoKsuY0OQAAjwmAAJNExFKKwaTGIOiBqwtBA/mpeg4.mp4";
+const GIF_2_WIDTH = 848;
+const GIF_2_HEIGHT = 384;
+const GIF_2_DURATION = 1;
+const VIDEO_URL = "https://slow.transload.workers.dev/BAACAgEAAx0EYtH4LwABBYF1Y9Zcl0zhprqtWg5WffhQ4p8pAosAAmIEAAJcc7FG-LyqRBJwnvItBA/video.mp4";
+const VOICE_URL = "https://slow.transload.workers.dev/AwACAgQAAx0EYtH4LwABBYFPY9ZZZBAzxfPoEWOHGwUeKFCrHzoAAmgMAAIRJ7FS39XFVc2yptUtBA/voice.ogg";
+const YT_VIDEO_URL = "https://youtu.be/JmvCpR45LKA";
+const YT_VIDEO_DURATION = 103;
+
 // MEME RESOURCES
 
 export default {
@@ -106,6 +120,26 @@ export default {
 			}
 			if (update.inline_query) {
 				let inline_query = update.inline_query;
+				let reply_markup = {
+					inline_keyboard: [
+						[
+							{
+								text: "(string) Label text on the button",
+								url: STICKER_URL,
+							}
+						]
+					]
+				};
+				let input_text_message_content = {
+					message_text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
+					parse_mode: "HTML",
+					disable_web_page_preview: false,
+				};
+				let inputTextMessageContent = {
+					message_text: `<a href="${YT_VIDEO_URL}">&#x200b;</a><pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
+					parse_mode: "HTML",
+					disable_web_page_preview: false,
+				};
 				response = {
 					method: "answerInlineQuery",
 					inline_query_id: inline_query.id,
@@ -114,21 +148,8 @@ export default {
 							type: "article",
 							id: 1,
 							title: "(string) Title of the result",
-							input_message_content: {
-								message_text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
-								parse_mode: "HTML",
-								disable_web_page_preview: false,
-							},
-							reply_markup: {
-								inline_keyboard: [
-									[
-										{
-											text: "(string) Label text on the button",
-											url: STICKER_URL,
-										}
-									]
-								]
-							},
+							input_message_content: input_text_message_content,
+							reply_markup: reply_markup,
 							url: STICKER_URL,
 							hide_url: true,
 							description: "(string) Optional. Short description of the result",
@@ -146,16 +167,7 @@ export default {
 								last_name: "(string) Optional. Contact's last name",
 								vcard: "",
 							},
-							reply_markup: {
-								inline_keyboard: [
-									[
-										{
-											text: "(string) Label text on the button",
-											url: STICKER_URL,
-										}
-									]
-								]
-							},
+							reply_markup: reply_markup,
 							url: STICKER_URL,
 							hide_url: true,
 							description: "(string) Optional. Short description of the result",
@@ -174,17 +186,70 @@ export default {
 							description: "(string) Optional. Short description of the result",
 							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
 							parse_mode: "HTML",
-							reply_markup: {
-								inline_keyboard: [
-									[
-										{
-											text: "(string) Label text on the button",
-											url: STICKER_URL,
-										}
-									]
-								]
-							},
+							reply_markup: reply_markup,
 							// input_message_content:
+						},
+						{
+							type: "gif",
+							id: 4,
+							gif_url: GIF_URL,
+							gif_width: GIF_WIDTH,
+							gif_height: GIF_HEIGHT,
+							gif_duration: GIF_DURATION,
+							thumb_url: SMAII_STICKER_URL,
+							thumb_mime_type: "image/jpeg",
+							title: "(string) Title of the result",
+							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
+							parse_mode: "HTML",
+							reply_markup: reply_markup,
+							// input_message_content:
+						},
+						{
+							type: "mpeg4_gif",
+							id: 5,
+							mpeg4_url: GIF_2_URL,
+							mpeg4_width: GIF_2_WIDTH,
+							mpeg4_height: GIF_2_HEIGHT,
+							mpeg4_duration: GIF_2_DURATION,
+							thumb_url: SMAII_STICKER_URL,
+							thumb_mime_type: "image/jpeg",
+							title: "(string) Title of the result",
+							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
+							parse_mode: "HTML",
+							reply_markup: reply_markup,
+							// input_message_content:
+						},
+						{
+							type: "video",
+							id: 6,
+							video_url: VIDEO_URL,
+							mime_type: "video/mp4",
+							thumb_url: SMAII_STICKER_URL,
+							title: "(string) Title of the result",
+							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
+							parse_mode: "HTML",
+							video_width: 0,
+							video_height: 0,
+							video_duration: YT_VIDEO_DURATION,
+							description: "(string) Optional. Short description of the result",
+							reply_markup: reply_markup,
+							// input_message_content:
+						},
+						{
+							type: "video",
+							id: 7,
+							video_url: YT_VIDEO_URL,
+							mime_type: "text/html",
+							thumb_url: SMAII_STICKER_URL,
+							title: "(string) Title of the result",
+							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
+							parse_mode: "HTML",
+							video_width: 0,
+							video_height: 0,
+							video_duration: YT_VIDEO_DURATION,
+							description: "(string) Optional. Short description of the result",
+							reply_markup: reply_markup,
+							input_message_content: inputTextMessageContent,
 						},
 					],
 					cache_time: 300,
