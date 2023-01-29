@@ -76,6 +76,14 @@ export default {
 					break;
 				}
 			}
+			return new Response(
+				JSON.stringify({}),
+				{
+					headers: {
+						"Content-Type": "application/json; charset=UTF-8",
+					}
+				}
+			)
 		}
 		return Response.redirect("https://t.me/SpEcHlDe/1348");
 	},
