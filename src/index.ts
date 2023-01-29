@@ -34,10 +34,11 @@ async function botHoistedApi(
 	return await one.json();
 }
 
+// Telegram Constants
 const TG_MAX_MESSAGE_LENGTH = 4096;
 const TG_MAX_CAPTION_LENGTH = 1024;
 const TG_FILE_ID_BASEURL = "https://slow.transload.workers.dev";
-// MEME RESOURCES
+// BEGIN: MEME RESOURCES
 const STICKER_FILE_ID = "CAADAgADpAwAAqoUyEoBbu6msnyOHAI";
 const STICKER_URL = `${TG_FILE_ID_BASEURL}/${STICKER_FILE_ID}/sticker.jpg`;
 const STICKER_WIDTH = 512;
@@ -59,8 +60,7 @@ const VIDEO_URL = `${TG_FILE_ID_BASEURL}/BAACAgEAAx0EYtH4LwABBYF1Y9Zcl0zhprqtWg5
 const VOICE_URL = `${TG_FILE_ID_BASEURL}/AwACAgQAAx0EYtH4LwABBYFPY9ZZZBAzxfPoEWOHGwUeKFCrHzoAAmgMAAIRJ7FS39XFVc2yptUtBA/voice.ogg`;
 const YT_VIDEO_URL = "https://youtu.be/JmvCpR45LKA";
 const YT_VIDEO_DURATION = 103;
-
-// MEME RESOURCES
+// END: MEME RESOURCES
 
 export default {
 	async fetch(
@@ -127,8 +127,18 @@ export default {
 							{
 								text: "(string) Label text on the button",
 								url: STICKER_URL,
-							}
-						]
+							},
+						],
+						[
+							{
+								text: "(string) Label text on the button",
+								switch_inline_query: "(string) Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted.",
+							},
+							{
+								text: "(string) Label text on the button",
+								switch_inline_query_current_chat: "(string) Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.",
+							},
+						],
 					]
 				};
 				let input_text_message_content = {
