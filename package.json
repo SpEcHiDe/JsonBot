@@ -12,6 +12,7 @@
     "deploy": "wrangler publish"
   },
   "dependencies": {
+    "@grammyjs/parse-mode": "^1.6.0",
     "grammy": "1.13.1"
   }
 }
