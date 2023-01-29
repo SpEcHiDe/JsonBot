@@ -62,19 +62,19 @@ export default {
 				) {
 					if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
 						while (msgToSend.length > 0) {
-							console.log(await botHoistedApi(
+							await botHoistedApi(
 								botToken,
 								"sendMessage",
 								{
 									text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
-									chat_id: update[updateType]["from"]["id"],
+									chat_id: update[updateType]["chat"]["id"] || "",
 									reply_to_message_id: update[updateType].message_id,
 									parse_mode: "HTML",
 									disable_web_page_preview: true,
 									disable_notification: true,
 									allow_sending_without_reply: true,
 								}
-							));
+							);
 							msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
 						}
 					}
@@ -82,7 +82,7 @@ export default {
 						response = {
 							method: "sendMessage",
 							text: `<pre><code class="language-json">${msgToSend}</code></pre>`,
-							chat_id: update[updateType]["from"]["id"],
+							chat_id: update[updateType]["chat"]["id"],
 							reply_to_message_id: update[updateType].message_id,
 							parse_mode: "HTML",
 							disable_web_page_preview: true,
