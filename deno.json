@@ -1,6 +1,6 @@
 {
     "tasks": {
-        "start": "deno run --allow-net --allow-read --allow-env src/app.ts",
-        "serverless": "deno run --allow-net --allow-read --allow-env src/app.ts"
+        "start": "deno run --allow-net --allow-read --allow-env start.ts",
+        "serverless": "deno run --allow-net --allow-read --allow-env start.ts"
     }
 }
