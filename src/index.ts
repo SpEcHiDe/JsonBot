@@ -64,7 +64,7 @@ export default {
 							"sendMessage",
 							{
 								text: `<pre><code class="language-json">${onemsg}</code></pre>`,
-								chat_id: update[updateType].from.id,
+								chat_id: update[updateType]["from"]["id"],
 								reply_to_message_id: update[updateType].message_id,
 								parse_mode: "HTML",
 								disable_web_page_preview: true,
