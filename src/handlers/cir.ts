@@ -1,4 +1,4 @@
-import { Composer, InlineKeyboard } from "grammy";
+import { Composer } from "grammy/web";
 
 export const composer = new Composer();
 

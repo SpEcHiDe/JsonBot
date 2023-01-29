@@ -1,4 +1,4 @@
-import { Composer, InlineKeyboard } from "grammy";
+import { Composer, InlineKeyboard } from "grammy/web";
 import { getBot } from "../bots.js";
 
 const composer = new Composer();
@@ -18,7 +18,26 @@ composer.on("msg:text").filter(
             if (bot) {
                 try {
                     // Make sure it is `https` not `http`!
-                    await bot.api.setWebhook(`${process.env.URL}/${bot_token}`);
+                    await bot.api.setWebhook(
+                        `${process.env.URL}/${bot_token}`,
+                        {
+                            drop_pending_updates: true,
+                            allowed_updates: [
+                                "message",
+                                "edited_message",
+                                "channel_post",
+                                "edited_channel_post",
+                                "inline_query",
+                                "chosen_inline_result",
+                                "callback_query",
+                                "poll",
+                                "poll_answer",
+                                "my_chat_member",
+                                "chat_member",
+                                "chat_join_request",
+                            ],
+                        }
+                    );
                 }
                 catch (e) {}
             }

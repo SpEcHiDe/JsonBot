@@ -1,4 +1,4 @@
-import { Composer, InlineKeyboard } from "grammy";
+import { Composer } from "grammy/web";
 import { TG_MAX_MESSAGE_LENGTH } from "./../consts";
 
 export const composer = new Composer();

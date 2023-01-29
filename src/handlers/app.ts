@@ -1,4 +1,4 @@
-import { Composer } from "grammy";
+import { Composer } from "grammy/web";
 
 import tgbte from "./tgbte";
 import msg from "./msg";

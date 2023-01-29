@@ -1,4 +1,4 @@
-import { Composer } from "grammy";
+import { Composer } from "grammy/web";
 import {
     TG_MAX_MESSAGE_LENGTH,
     TG_MAX_CAPTION_LENGTH,

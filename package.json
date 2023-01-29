@@ -1,18 +1,18 @@
 {
-  "name": "jsonbot",
-  "version": "0.0.0",
-  "devDependencies": {
-    "@cloudflare/workers-types": "4.20230115.0",
-    "typescript": "4.9.4",
-    "wrangler": "2.6.2"
-  },
-  "private": true,
-  "scripts": {
-    "start": "wrangler dev",
-    "deploy": "wrangler publish"
-  },
-  "dependencies": {
-    "@grammyjs/parse-mode": "^1.6.0",
-    "grammy": "1.13.1"
-  }
+    "name": "jsonbot",
+    "version": "0.0.0",
+    "devDependencies": {
+        "@cloudflare/workers-types": "4.20230115.0",
+        "typescript": "4.9.4",
+        "wrangler": "2.6.2"
+    },
+    "private": true,
+    "scripts": {
+        "start": "wrangler dev",
+        "deploy": "wrangler publish"
+    },
+    "dependencies": {
+        "@grammyjs/parse-mode": "^1.6.0",
+        "grammy": "1.13.1"
+    }
 }
