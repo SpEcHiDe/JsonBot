@@ -36,26 +36,27 @@ async function botHoistedApi(
 
 const TG_MAX_MESSAGE_LENGTH = 4096;
 const TG_MAX_CAPTION_LENGTH = 1024;
-
+const TG_FILE_ID_BASEURL = "https://slow.transload.workers.dev";
 // MEME RESOURCES
 const STICKER_FILE_ID = "CAADAgADpAwAAqoUyEoBbu6msnyOHAI";
-const STICKER_URL = `https://slow.transload.workers.dev/${STICKER_FILE_ID}/sticker.jpg`;
+const STICKER_URL = `${TG_FILE_ID_BASEURL}/${STICKER_FILE_ID}/sticker.jpg`;
 const STICKER_WIDTH = 512;
 const STICKER_HEIGHT = 325;
 const SMAII_STICKER_WIDTH = 100;
 const SMAII_STICKER_HEIGHT = 100;
 const SMAII_STICKER_URL = `https://wsrv.nl/?url=${STICKER_URL}&w=${SMAII_STICKER_WIDTH}&h=${SMAII_STICKER_HEIGHT}`;
-const AUDIO_URL = "https://slow.transload.workers.dev/CQACAgQAAx0EYtH4LwABBYFQY9ZZZURV9eQd4i98OMiq6CGXRtcAAmkMAAIRJ7FSKA6JG9b_n54tBA/audio.mp3";
-const GIF_URL = "https://slow.transload.workers.dev/CgACAgQAAx0EYtH4LwABBYGJY9ZeRwWhvRsBkOWwDfzt920wAwADbwwAAhEnsVJBCGoFT-Oz_C0E/animation.gif";
+const AUDIO_URL = `${TG_FILE_ID_BASEURL}/CQACAgQAAx0EYtH4LwABBYFQY9ZZZURV9eQd4i98OMiq6CGXRtcAAmkMAAIRJ7FSKA6JG9b_n54tBA/audio.mp3`;
+const AUDIO_DURATION = 19;
+const GIF_URL = `${TG_FILE_ID_BASEURL}/CgACAgQAAx0EYtH4LwABBYGJY9ZeRwWhvRsBkOWwDfzt920wAwADbwwAAhEnsVJBCGoFT-Oz_C0E/animation.gif`;
 const GIF_WIDTH = 320;
 const GIF_HEIGHT = 134;
 const GIF_DURATION = 3;
-const GIF_2_URL = "https://slow.transload.workers.dev/CgACAgIAAx0EYtH4LwABBYF8Y9Zc-Yc8FsmaiHNLOXUoKsuY0OQAAjwmAAJNExFKKwaTGIOiBqwtBA/mpeg4.mp4";
+const GIF_2_URL = `${TG_FILE_ID_BASEURL}/CgACAgIAAx0EYtH4LwABBYF8Y9Zc-Yc8FsmaiHNLOXUoKsuY0OQAAjwmAAJNExFKKwaTGIOiBqwtBA/mpeg4.mp4`;
 const GIF_2_WIDTH = 848;
 const GIF_2_HEIGHT = 384;
 const GIF_2_DURATION = 1;
-const VIDEO_URL = "https://slow.transload.workers.dev/BAACAgEAAx0EYtH4LwABBYF1Y9Zcl0zhprqtWg5WffhQ4p8pAosAAmIEAAJcc7FG-LyqRBJwnvItBA/video.mp4";
-const VOICE_URL = "https://slow.transload.workers.dev/AwACAgQAAx0EYtH4LwABBYFPY9ZZZBAzxfPoEWOHGwUeKFCrHzoAAmgMAAIRJ7FS39XFVc2yptUtBA/voice.ogg";
+const VIDEO_URL = `${TG_FILE_ID_BASEURL}/BAACAgEAAx0EYtH4LwABBYF1Y9Zcl0zhprqtWg5WffhQ4p8pAosAAmIEAAJcc7FG-LyqRBJwnvItBA/video.mp4`;
+const VOICE_URL = `${TG_FILE_ID_BASEURL}/AwACAgQAAx0EYtH4LwABBYFPY9ZZZBAzxfPoEWOHGwUeKFCrHzoAAmgMAAIRJ7FS39XFVc2yptUtBA/voice.ogg`;
 const YT_VIDEO_URL = "https://youtu.be/JmvCpR45LKA";
 const YT_VIDEO_DURATION = 103;
 
@@ -250,6 +251,29 @@ export default {
 							description: "(string) Optional. Short description of the result",
 							reply_markup: reply_markup,
 							input_message_content: inputTextMessageContent,
+						},
+						{
+							type: "audio",
+							id: 8,
+							audio_url: AUDIO_URL,
+							title: "(string) Title of the result",
+							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
+							parse_mode: "HTML",
+							performer: "(string) Optional. Performer",
+							audio_duration: AUDIO_DURATION,
+							reply_markup: reply_markup,
+							// input_message_content:
+						},
+						{
+							type: "voice",
+							id: 9,
+							voice_url: VOICE_URL,
+							title: "(string) Title of the result",
+							caption: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)}</code></pre>`,
+							parse_mode: "HTML",
+							voice_duration: AUDIO_DURATION,
+							reply_markup: reply_markup,
+							// input_message_content:
 						},
 					],
 					cache_time: 300,
