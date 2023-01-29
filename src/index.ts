@@ -31,7 +31,7 @@ async function botHoistedApi(
 			body: JSON.stringify(pms)
 		}
 	);
-	return await one.text();
+	return await one.json();
 }
 
 const TG_MAX_MESSAGE_LENGTH = 4096;
@@ -44,6 +44,7 @@ export default {
 	): Promise<Response> {
 		if (request.method === "POST") {
 			let { pathname } = new URL(request.url);
+			let response: any = {};
 			let botToken = pathname.substring(1);
 			let update: any = await request.json();
 			// https://stackoverflow.com/a/3515761/4723940
@@ -61,7 +62,7 @@ export default {
 				) {
 					if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
 						while (msgToSend.length > 0) {
-							await botHoistedApi(
+							console.log(await botHoistedApi(
 								botToken,
 								"sendMessage",
 								{
@@ -73,30 +74,27 @@ export default {
 									disable_notification: true,
 									allow_sending_without_reply: true,
 								}
-							);
+							));
 							msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
 						}
 					}
 					else {
-						await botHoistedApi(
-							botToken,
-							"sendMessage",
-							{
-								text: `<pre><code class="language-json">${msgToSend}</code></pre>`,
-								chat_id: update[updateType]["from"]["id"],
-								reply_to_message_id: update[updateType].message_id,
-								parse_mode: "HTML",
-								disable_web_page_preview: true,
-								disable_notification: true,
-								allow_sending_without_reply: true,
-							}
-						);
+						response = {
+							method: "sendMessage",
+							text: `<pre><code class="language-json">${msgToSend}</code></pre>`,
+							chat_id: update[updateType]["from"]["id"],
+							reply_to_message_id: update[updateType].message_id,
+							parse_mode: "HTML",
+							disable_web_page_preview: true,
+							disable_notification: true,
+							allow_sending_without_reply: true,
+						};
 					}
 					break;
 				}
 			}
 			return new Response(
-				JSON.stringify({}),
+				JSON.stringify(response),
 				{
 					headers: {
 						"Content-Type": "application/json; charset=UTF-8",
