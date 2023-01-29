@@ -19,12 +19,64 @@ export interface Env {
 	// MY_BUCKET: R2Bucket;
 }
 
+async function botHoistedApi(
+	botToken: string,
+	method: string,
+	pms: any
+) {
+	return await fetch(
+		`https://api.telegram.org/bot${botToken}/${method}`,
+		{
+			method: "POST",
+			body: JSON.stringify(pms)
+		}
+	);
+}
+
 export default {
 	async fetch(
 		request: Request,
 		env: Env,
 		ctx: ExecutionContext
 	): Promise<Response> {
-		return new Response("Hello World!");
+		if (request.method === "POST") {
+			let { pathname } = new URL(request.url);
+			let botToken = pathname.substring(1);
+			let update: any = await request.json();
+			// https://stackoverflow.com/a/3515761/4723940
+			let msgToSend: string = JSON.stringify(update, null, 4);
+			// https://stackoverflow.com/a/6259543/4723940
+			let msgsToSend: Array<string> = msgToSend.match(/.{1,4095}/g) || [];
+			let updateTypes: Array<string> = [
+				"message",
+				"edited_message",
+				"channel_post",
+				"edited_channel_post",
+			];
+			for (let updateType of updateTypes) {
+				if (
+					update.hasOwnProperty(updateType) &&
+					!!update[updateType]
+				) {
+					for (let onemsg of msgsToSend) {
+						await botHoistedApi(
+							botToken,
+							"sendMessage",
+							{
+								text: onemsg,
+								chat_id: update[updateType].from.id,
+								reply_to_message_id: update[updateType].message_id,
+								parse_mode: "HTML",
+								disable_web_page_preview: true,
+								disable_notification: true,
+								allow_sending_without_reply: true,
+							}
+						);
+					}
+					break;
+				}
+			}
+		}
+		return Response.redirect("https://t.me/SpEcHlDe/1348");
 	},
 };
