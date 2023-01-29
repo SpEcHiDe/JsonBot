@@ -34,6 +34,8 @@ async function botHoistedApi(
 	return await one.text();
 }
 
+const TG_MAX_MESSAGE_LENGTH = 4096;
+
 export default {
 	async fetch(
 		request: Request,
@@ -46,8 +48,6 @@ export default {
 			let update: any = await request.json();
 			// https://stackoverflow.com/a/3515761/4723940
 			let msgToSend: string = JSON.stringify(update, null, 4);
-			// https://stackoverflow.com/a/6259543/4723940
-			let msgsToSend: Array<string> = msgToSend.match(/.{1,4095}/g) || [];
 			let updateTypes: Array<string> = [
 				"message",
 				"edited_message",
@@ -59,12 +59,30 @@ export default {
 					update.hasOwnProperty(updateType) &&
 					!!update[updateType]
 				) {
-					for (let onemsg of msgsToSend) {
-						console.log(await botHoistedApi(
+					if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+						while (msgToSend.length > 0) {
+							await botHoistedApi(
+								botToken,
+								"sendMessage",
+								{
+									text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
+									chat_id: update[updateType]["from"]["id"],
+									reply_to_message_id: update[updateType].message_id,
+									parse_mode: "HTML",
+									disable_web_page_preview: true,
+									disable_notification: true,
+									allow_sending_without_reply: true,
+								}
+							);
+							msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
+						}
+					}
+					else {
+						await botHoistedApi(
 							botToken,
 							"sendMessage",
 							{
-								text: `<pre><code class="language-json">${onemsg}</code></pre>`,
+								text: `<pre><code class="language-json">${msgToSend}</code></pre>`,
 								chat_id: update[updateType]["from"]["id"],
 								reply_to_message_id: update[updateType].message_id,
 								parse_mode: "HTML",
@@ -72,7 +90,7 @@ export default {
 								disable_notification: true,
 								allow_sending_without_reply: true,
 							}
-						));
+						);
 					}
 					break;
 				}
