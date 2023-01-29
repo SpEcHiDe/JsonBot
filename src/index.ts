@@ -24,13 +24,14 @@ async function botHoistedApi(
 	method: string,
 	pms: any
 ) {
-	return await fetch(
+	let one = await fetch(
 		`https://api.telegram.org/bot${botToken}/${method}`,
 		{
 			method: "POST",
 			body: JSON.stringify(pms)
 		}
 	);
+	return await one.text();
 }
 
 export default {
@@ -59,7 +60,7 @@ export default {
 					!!update[updateType]
 				) {
 					for (let onemsg of msgsToSend) {
-						await botHoistedApi(
+						console.log(await botHoistedApi(
 							botToken,
 							"sendMessage",
 							{
@@ -71,7 +72,7 @@ export default {
 								disable_notification: true,
 								allow_sending_without_reply: true,
 							}
-						);
+						));
 					}
 					break;
 				}
