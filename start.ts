@@ -1,7 +1,7 @@
 import { webhookCallback, GrammyError, HttpError } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
 import { serve } from "https://deno.land/std@0.154.0/http/server.ts";
-import { composer } from "./src/handlers/app";
-import { getBot } from "./src/bots";
+import { composer } from "./src/handlers/app.ts";
+import { getBot } from "./src/bots.ts";
 
 
 serve(async (req) => {

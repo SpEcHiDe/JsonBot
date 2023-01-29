@@ -1,5 +1,5 @@
 import { Composer } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
-import { TG_MAX_MESSAGE_LENGTH } from "./../consts";
+import { TG_MAX_MESSAGE_LENGTH } from "./../consts.ts";
 
 export const composer = new Composer();
 

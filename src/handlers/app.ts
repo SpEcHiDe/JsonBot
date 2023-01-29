@@ -1,11 +1,11 @@
 import { Composer } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
 
-import tgbte from "./tgbte";
-import msg from "./msg";
-import cjr from "./cjr";
-import inline from "./inline";
-import cbdata from "./cbdata";
-import cir from "./cir";
+import tgbte from "./tgbte.ts";
+import msg from "./msg.ts";
+import cjr from "./cjr.ts";
+import inline from "./inline.ts";
+import cbdata from "./cbdata.ts";
+import cir from "./cir.ts";
 
 export const composer = new Composer();
 

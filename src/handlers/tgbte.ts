@@ -1,5 +1,5 @@
 import { Composer, InlineKeyboard } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
-import { getBot } from "../bots.js";
+import { getBot } from "../bots.ts";
 
 const composer = new Composer();
 
