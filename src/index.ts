@@ -36,6 +36,14 @@ async function botHoistedApi(
 
 const TG_MAX_MESSAGE_LENGTH = 4096;
 
+// MEME RESOURCES
+const STICKER_FILE_ID = "CAADAgADpAwAAqoUyEoBbu6msnyOHAI";
+const STICKER_URL = `https://slow.transload.workers.dev/${STICKER_FILE_ID}/sticker.jpg`;
+const SMAII_STICKER_WIDTH = 100;
+const SMAII_STICKER_HEIGHT = 100;
+const SMAII_STICKER_URL = `https://wsrv.nl/?url=${STICKER_URL}&w=${SMAII_STICKER_WIDTH}&h=${SMAII_STICKER_HEIGHT}`;
+// MEME RESOURCES
+
 export default {
 	async fetch(
 		request: Request,
@@ -93,6 +101,81 @@ export default {
 					break;
 				}
 			}
+			if (update.inline_query) {
+				let inline_query = update.inline_query;
+				response = {
+					method: "answerInlineQuery",
+					inline_query_id: inline_query.id,
+					results: [
+						{
+							type: "article",
+							id: 1,
+							title: "(string) Title of the result",
+							input_message_content: {
+								message_text: "Text of the message to be sent, 1-4096 characters",
+								parse_mode: "HTML",
+								disable_web_page_preview: false,
+							},
+							reply_markup: {
+								inline_keyboard: [
+									[
+										{
+											text: "(string) Label text on the button",
+											url: STICKER_URL,
+										}
+									]
+								]
+							},
+							url: STICKER_URL,
+							hide_url: true,
+							description: "(string) Optional. Short description of the result",
+							thumb_url: SMAII_STICKER_URL,
+							thumb_width: SMAII_STICKER_WIDTH,
+							thumb_height: SMAII_STICKER_HEIGHT,
+						}
+					],
+					cache_time: 300,
+					is_personal: true,
+					next_offset: "",
+					switch_pm_text: "(string) Optional. If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter",
+					switch_pm_parameter: "inline",
+				};
+			}
+			else if (update.chosen_inline_result) {
+				response = {
+					method: "sendMessage",
+					text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
+					chat_id: update.chosen_inline_result["from"]["id"],
+					parse_mode: "HTML",
+					disable_web_page_preview: true,
+					disable_notification: true,
+				};
+			}
+			else if (update.callback_query) {
+				response = {
+					method: "sendMessage",
+					text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
+					chat_id: update.callback_query["from"]["id"],
+					reply_to_message_id: update.callback_query?.message.message_id || 0,
+					allow_sending_without_reply: true,
+					parse_mode: "HTML",
+					disable_web_page_preview: true,
+					disable_notification: true,
+				};
+			}
+			else if (update.chat_join_request) {
+				response = {
+					method: "sendMessage",
+					text: `<pre><code class="language-json">${msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)}</code></pre>`,
+					chat_id: update.chat_join_request["from"]["id"],
+					parse_mode: "HTML",
+					disable_web_page_preview: true,
+					disable_notification: true,
+				};
+			}
+			else {
+			}
+
 			return new Response(
 				JSON.stringify(response),
 				{
