@@ -1,7 +1,7 @@
-import { Bot, Context } from "grammy/web";
-import { hydrateReply, parseMode } from "@grammyjs/parse-mode";
+import { Bot, Context } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
+import { hydrateReply, parseMode } from "https://deno.land/x/grammy_parse_mode@1.5.0/mod.ts";
 // https://t.me/c/1493653006/107307
-import type { ParseModeFlavor } from "@grammyjs/parse-mode";
+import type { ParseModeFlavor } from "https://deno.land/x/grammy_parse_mode@1.5.0/mod.ts";
 
 const bots = new Map<string, Bot<ParseModeFlavor<Context>>>();
 

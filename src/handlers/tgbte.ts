@@ -1,4 +1,4 @@
-import { Composer, InlineKeyboard } from "grammy/web";
+import { Composer, InlineKeyboard } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
 import { getBot } from "../bots.js";
 
 const composer = new Composer();
