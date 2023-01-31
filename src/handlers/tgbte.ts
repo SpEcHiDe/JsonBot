@@ -1,5 +1,6 @@
 import { Composer, InlineKeyboard } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
 import { getBot } from "../bots.ts";
+import { TG_ALLOWED_UPDATES, TG_ENV_S } from "../consts.ts";
 
 const composer = new Composer();
 
@@ -19,23 +20,10 @@ composer.on("msg:text").filter(
                 try {
                     // Make sure it is `https` not `http`!
                     await bot.api.setWebhook(
-                        `${process.env.URL}/${bot_token}`,
+                        `${TG_ENV_S.URL}/${bot_token}`,
                         {
                             drop_pending_updates: true,
-                            allowed_updates: [
-                                "message",
-                                "edited_message",
-                                "channel_post",
-                                "edited_channel_post",
-                                "inline_query",
-                                "chosen_inline_result",
-                                "callback_query",
-                                "poll",
-                                "poll_answer",
-                                "my_chat_member",
-                                "chat_member",
-                                "chat_join_request",
-                            ],
+                            allowed_updates: TG_ALLOWED_UPDATES,
                         }
                     );
                 }
