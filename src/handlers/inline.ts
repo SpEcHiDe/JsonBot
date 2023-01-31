@@ -119,7 +119,6 @@ composer.on("inline_query", (ctx) => {
                 title: "(string) Title of the result",
                 description: "(string) Optional. Short description of the result",
                 caption: msgCaption,
-                parse_mode: "HTML",
                 reply_markup: reply_markup,
                 // input_message_content:
             },
@@ -134,7 +133,6 @@ composer.on("inline_query", (ctx) => {
                 thumb_mime_type: "image/jpeg",
                 title: "(string) Title of the result",
                 caption: msgCaption,
-                parse_mode: "HTML",
                 reply_markup: reply_markup,
                 // input_message_content:
             },
@@ -149,7 +147,6 @@ composer.on("inline_query", (ctx) => {
                 thumb_mime_type: "image/jpeg",
                 title: "(string) Title of the result",
                 caption: msgCaption,
-                parse_mode: "HTML",
                 reply_markup: reply_markup,
                 // input_message_content:
             },
@@ -161,7 +158,6 @@ composer.on("inline_query", (ctx) => {
                 thumb_url: SMAII_STICKER_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
-                parse_mode: "HTML",
                 video_width: 0,
                 video_height: 0,
                 video_duration: YT_VIDEO_DURATION,
@@ -177,7 +173,6 @@ composer.on("inline_query", (ctx) => {
                 thumb_url: SMAII_STICKER_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
-                parse_mode: "HTML",
                 video_width: 0,
                 video_height: 0,
                 video_duration: YT_VIDEO_DURATION,
@@ -191,7 +186,6 @@ composer.on("inline_query", (ctx) => {
                 audio_url: AUDIO_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
-                parse_mode: "HTML",
                 performer: "(string) Optional. Performer",
                 audio_duration: AUDIO_DURATION,
                 reply_markup: reply_markup,
@@ -203,7 +197,6 @@ composer.on("inline_query", (ctx) => {
                 voice_url: VOICE_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
-                parse_mode: "HTML",
                 voice_duration: AUDIO_DURATION,
                 reply_markup: reply_markup,
                 // input_message_content:
