@@ -1,4 +1,4 @@
-import { Composer, InlineKeyboard } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
+import { Composer, InlineKeyboard } from "grammy/mod.ts";
 import { getBot } from "../bots.ts";
 import { TG_ALLOWED_UPDATES, TG_ENV_S } from "../consts.ts";
 

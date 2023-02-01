@@ -1,4 +1,4 @@
-import { Composer } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
+import { Composer } from "grammy/mod.ts";
 
 import tgbte from "./tgbte.ts";
 import msg from "./msg.ts";
