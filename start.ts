@@ -1,5 +1,5 @@
-import { webhookCallback, GrammyError, HttpError } from "https://deno.land/x/grammy@v1.13.1/mod.ts";
-import { serve } from "https://deno.land/std@0.154.0/http/server.ts";
+import { webhookCallback } from "grammy/mod.ts";
+import { serve } from "std/http/server.ts";
 import { composer } from "./src/handlers/app.ts";
 import { getBot } from "./src/bots.ts";
 import { TG_ALLOWED_UPDATES, TG_ENV_S } from "./src/consts.ts";
@@ -13,24 +13,12 @@ if (TG_ENV_S.LP) {
         // grammY will call the listeners when users send messages to your bot.
         // Handle the /start command.
         bot.use(composer);
-        // https://grammy.dev/guide/errors.html#catching-errors
-        bot.catch((err) => {
-            const ctx = err.ctx;
-            console.error(`Error while handling update ${ctx.update.update_id}:`);
-            const e = err.error;
-            if (e instanceof GrammyError) {
-                console.error("Error in request:", e.description);
-            } else if (e instanceof HttpError) {
-                console.error("Could not contact Telegram:", e);
-            } else {
-                console.error("Unknown error:", e);
-            }
-        });
+        // start bot
         bot.start({
             drop_pending_updates: true,
             allowed_updates: TG_ALLOWED_UPDATES,
         });
-        
+        // stop bot
         Deno.addSignalListener("SIGINT", () => bot.stop());
         Deno.addSignalListener("SIGTERM", () => bot.stop());
     }
@@ -48,19 +36,6 @@ else {
                     // grammY will call the listeners when users send messages to your bot.
                     // Handle the /start command.
                     bot.use(composer);
-                    // https://grammy.dev/guide/errors.html#catching-errors
-                    bot.catch((err) => {
-                        const ctx = err.ctx;
-                        console.error(`Error while handling update ${ctx.update.update_id}:`);
-                        const e = err.error;
-                        if (e instanceof GrammyError) {
-                            console.error("Error in request:", e.description);
-                        } else if (e instanceof HttpError) {
-                            console.error("Could not contact Telegram:", e);
-                        } else {
-                            console.error("Unknown error:", e);
-                        }
-                    });
                     // finally, register the webhook
                     // https://t.me/c/1493653006/49880
                     return await webhookCallback(bot, "std/http")(req);
