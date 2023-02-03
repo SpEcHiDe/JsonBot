@@ -42,7 +42,15 @@ const TG_ALLOWED_UPDATES = [
     "chat_join_request",
 ];
 const TG_ENV_S = Deno.env.toObject();
-
+const TG_MES_PR = (msg) => {
+    // https://stackoverflow.com/a/3515761/4723940
+    return JSON.stringify(
+        msg,
+        null,
+        2
+    );
+    // <= https://t.me/c/1220993104/1/1353555
+}
 
 export {
     TG_ALLOWED_UPDATES,
@@ -79,4 +87,6 @@ export {
     YT_VIDEO_DURATION,
 
     TG_ENV_S,
+
+    TG_MES_PR,
 };

@@ -1,5 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MAX_MESSAGE_LENGTH } from "./../consts.ts";
+import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, } from "./../consts.ts";
 
 export const composer = new Composer();
 
@@ -14,12 +14,7 @@ composer.on(
         "edited_channel_post",
     ],
     async (ctx) => {
-        // https://stackoverflow.com/a/3515761/4723940
-        let msgToSend = JSON.stringify(
-            ctx.update,
-            null,
-            4
-        );
+        let msgToSend = TG_MES_PR(ctx.update);
         if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
             while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
                 let io: string = msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH);

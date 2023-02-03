@@ -30,6 +30,8 @@ import {
     VIDEO_URL,
     YT_VIDEO_URL,
     YT_VIDEO_DURATION,
+
+    TG_MES_PR,
 } from "./../consts.ts";
 
 const composer = new Composer();
@@ -37,12 +39,7 @@ const composer = new Composer();
 export default composer;
 
 composer.on("inline_query", (ctx) => {
-    // https://stackoverflow.com/a/3515761/4723940
-    let msgToSend = JSON.stringify(
-        ctx.update,
-        null,
-        4
-    );
+    let msgToSend = TG_MES_PR(ctx.update);
     //
     let reply_markup = {
         inline_keyboard: [
