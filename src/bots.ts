@@ -18,7 +18,7 @@ export function getBot(token: string) {
             // https://grammy.dev/guide/errors.html#catching-errors
             bot.catch((err) => {
                 const ctx = err.ctx;
-                console.error(`Error while handling update ${ctx.update.update_id}:`);
+                console.error("Error while handling update ", ctx.update);
                 const e = err.error;
                 if (e instanceof GrammyError) {
                     console.error("Error in request:", e.description);
