@@ -43,6 +43,12 @@ else {
                 }
             } catch (err) {
                 console.error(err);
+                return new Response(
+                    JSON.stringify([]),
+                    {
+                        status: 200,
+                    }
+                );
             }
         }
         return Response.redirect("https://t.me/SpEcHlDe/1348");
