@@ -25,6 +25,7 @@ if (TG_ENV_S.LP) {
 }
 else {
     serve(async (req) => {
+        console.log("received ", req);
         if (req.method === "POST") {
             const { pathname } = new URL(req.url);
             let botToken = pathname.substring(1);
