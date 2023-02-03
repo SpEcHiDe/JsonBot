@@ -1,3 +1,5 @@
+import { Update } from "grammy/types.ts";
+
 // Telegram Constants
 const TG_MAX_MESSAGE_LENGTH = 4096;
 const TG_MAX_CAPTION_LENGTH = 1024;
@@ -48,16 +50,16 @@ const TG_ALLOWED_UPDATES = [
   "chat_join_request",
 ];
 const TG_ENV_S = Deno.env.toObject();
-const TG_MES_PR = (msg) => {
+const TG_MES_PR = (upd: Update) => {
   // https://stackoverflow.com/a/3515761/4723940
   return JSON.stringify(
-    msg,
+    upd,
     null,
     2,
   );
   // <= https://t.me/c/1220993104/1/1353555
 };
-const TG_PR_MES = (msg) => {
+const TG_PR_MES = (msg: string) => {
   // 1094034
   return `<pre><code class="language-json">${msg}</code></pre>`;
 };

@@ -1,5 +1,5 @@
 import { Composer, InlineKeyboard } from "grammy/mod.ts";
-import { Entity } from "grammy/types.ts";
+import { MessageEntity } from "grammy/types.ts";
 import { getBot } from "../bots.ts";
 import { TG_ALLOWED_UPDATES, TG_ENV_S } from "../consts.ts";
 
@@ -10,7 +10,7 @@ export default composer;
 composer.on("msg:text").filter(
   (ctx) => ctx.msg.forward_from?.username?.toLowerCase() === "botfather",
   async (ctx) => {
-    const entities = ctx.message?.entities;
+    const entities = ctx.message?.entities || [];
     const msgText = ctx.message?.text || "";
     // extract bot token
     const bot_token = extractBotToken(msgText, entities);
@@ -46,7 +46,7 @@ composer.on("msg:text").filter(
   },
 );
 
-function extractBotToken(msgText: string, entities: Array<Entity>) {
+function extractBotToken(msgText: string, entities: Array<MessageEntity>) {
   // https://github.com/wjclub/telegram-bot-tokenextract/pull/1
   for (const entity_ in entities) {
     const entity = entities[Number(entity_)];
