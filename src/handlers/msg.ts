@@ -13,7 +13,7 @@ composer.on(
         "channel_post",
         "edited_channel_post",
     ],
-    (ctx) => {
+    async (ctx) => {
         // https://stackoverflow.com/a/3515761/4723940
         let msgToSend = JSON.stringify(
             ctx.update,
@@ -23,13 +23,13 @@ composer.on(
         if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
             while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
                 let io: string = msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH);
-                ctx.reply(
+                await ctx.reply(
                     `<pre><code class="language-json">${io}</code></pre>`
                 );
                 msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
             }
         }
-        return ctx.reply(
+        return await ctx.reply(
             `<pre><code class="language-json">${msgToSend}</code></pre>`
         );
     }
