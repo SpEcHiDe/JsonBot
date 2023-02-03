@@ -44,7 +44,11 @@ else {
             } catch (err) {
                 console.error(err);
                 return new Response(
-                    JSON.stringify([]),
+                    JSON.stringify({
+                        "method": "sendMessage",
+                        "chat_id": TG_ENV_S.OWCID,
+                        "text": err.toString().substring(0, 4095)
+                    }),
                     {
                         status: 200,
                     }
