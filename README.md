@@ -8,7 +8,12 @@ did not find a telegram bot, which could return with all the latest [telegram fe
 
 ### Why grammY ?
 
-This project started by using plain [node-fetch](https://github.com/SpEcHiDe/JsonBot/blob/71dd2de533ae2a3cee777e75006b5f54b0fe274d/src/index.ts) and all was in a single file. Since, this is a small telegram bot project it was fine to have it in a single file. Adding __grammY__ was an attempt to check if re-using the existing libraries could reduce the effort in creating this simple bot.
+This project started by using plain
+[node-fetch](https://github.com/SpEcHiDe/JsonBot/blob/71dd2de533ae2a3cee777e75006b5f54b0fe274d/src/index.ts)
+and all was in a single file. Since, this is a small telegram bot project it was
+fine to have it in a single file. Adding **grammY** was an attempt to check if
+re-using the existing libraries could reduce the effort in creating this simple
+bot.
 
 ## Contibuting
 
