@@ -20,6 +20,7 @@ import {
   TG_MAX_CAPTION_LENGTH,
   TG_MAX_MESSAGE_LENGTH,
   TG_MES_PR,
+  TG_PR_MES,
   VIDEO_URL,
   VOICE_URL,
   YT_VIDEO_DURATION,
@@ -31,9 +32,9 @@ const composer = new Composer();
 export default composer;
 
 composer.on("inline_query", (ctx) => {
-  let msgToSend = TG_MES_PR(ctx.update);
+  const msgToSend = TG_MES_PR(ctx.update);
   //
-  let reply_markup = {
+  const reply_markup = {
     inline_keyboard: [
       [
         {
@@ -56,20 +57,21 @@ composer.on("inline_query", (ctx) => {
     ],
   };
   //
-  let input_text_message_content = {
-    message_text: `<pre><code class="language-json">${
-      msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)
-    }</code></pre>`,
+  const input_text_message_content = {
+    message_text: TG_PR_MES(
+      msgToSend.substring(0, TG_MAX_CAPTION_LENGTH),
+    ),
   };
-  let inputTextMessageContent = {
-    message_text:
-      `<a href="${YT_VIDEO_URL}">&#x200b;</a><pre><code class="language-json">${
-        msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH)
-      }</code></pre>`,
+  const inputTextMessageContent = {
+    message_text: `<a href="${YT_VIDEO_URL}">&#x200b;</a>${
+      TG_PR_MES(
+        msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH),
+      )
+    }`,
   };
-  let msgCaption = `<pre><code class="language-json">${
-    msgToSend.substring(0, TG_MAX_CAPTION_LENGTH)
-  }</code></pre>`;
+  const msgCaption = TG_PR_MES(
+    msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH),
+  );
   //
   /**
    * https://grammy.dev/guide/inline-queries.html

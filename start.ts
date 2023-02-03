@@ -7,7 +7,7 @@ import { TG_ALLOWED_UPDATES, TG_ENV_S } from "./src/consts.ts";
 if (TG_ENV_S.LP) {
   // Create an instance of the `Bot` class and pass your authentication token to it.
   const bot = getBot(TG_ENV_S.TG_BOT_TOKEN);
-  if (!!bot) {
+  if (bot) {
     // You can now register listeners on your bot object `bot`.
     // grammY will call the listeners when users send messages to your bot.
     // Handle the /start command.
@@ -27,11 +27,11 @@ if (TG_ENV_S.LP) {
     console.log("received ", req);
     if (req.method === "POST") {
       const { pathname } = new URL(req.url);
-      let botToken = pathname.substring(1);
+      const botToken = pathname.substring(1);
       try {
         // Create an instance of the `Bot` class and pass your authentication token to it.
         const bot = getBot(botToken);
-        if (!!bot) {
+        if (bot) {
           // You can now register listeners on your bot object `bot`.
           // grammY will call the listeners when users send messages to your bot.
           // Handle the /start command.

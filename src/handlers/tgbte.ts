@@ -1,4 +1,5 @@
 import { Composer, InlineKeyboard } from "grammy/mod.ts";
+import { Entity } from "grammy/types.ts";
 import { getBot } from "../bots.ts";
 import { TG_ALLOWED_UPDATES, TG_ENV_S } from "../consts.ts";
 
@@ -9,10 +10,10 @@ export default composer;
 composer.on("msg:text").filter(
   (ctx) => ctx.msg.forward_from?.username?.toLowerCase() === "botfather",
   async (ctx) => {
-    let entities = ctx.message?.entities;
-    let msgText = ctx.message?.text || "";
+    const entities = ctx.message?.entities;
+    const msgText = ctx.message?.text || "";
     // extract bot token
-    let bot_token = extractBotToken(msgText, entities);
+    const bot_token = extractBotToken(msgText, entities);
     if (bot_token !== undefined) {
       // Create an instance of the `Bot` class and pass your authentication token to it.
       const bot = getBot(bot_token);
@@ -26,7 +27,9 @@ composer.on("msg:text").filter(
               allowed_updates: TG_ALLOWED_UPDATES,
             },
           );
-        } catch (e) {}
+        } catch (_e) {
+          // console.log(_e);
+        }
       }
     }
     // finally reply done to the user
@@ -43,10 +46,10 @@ composer.on("msg:text").filter(
   },
 );
 
-function extractBotToken(msgText: string, entities: any) {
+function extractBotToken(msgText: string, entities: Array<Entity>) {
   // https://github.com/wjclub/telegram-bot-tokenextract/pull/1
-  for (let entity_ in entities) {
-    let entity = entities[Number(entity_)];
+  for (const entity_ in entities) {
+    const entity = entities[Number(entity_)];
     if (entity.type == "code") {
       return msgText?.substring(
         entity.offset,

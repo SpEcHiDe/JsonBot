@@ -57,6 +57,10 @@ const TG_MES_PR = (msg) => {
   );
   // <= https://t.me/c/1220993104/1/1353555
 };
+const TG_PR_MES = (msg) => {
+  // 1094034
+  return `<pre><code class="language-json">${msg}</code></pre>`;
+};
 
 export {
   AUDIO_DURATION,
@@ -81,6 +85,7 @@ export {
   TG_MAX_CAPTION_LENGTH,
   TG_MAX_MESSAGE_LENGTH,
   TG_MES_PR,
+  TG_PR_MES,
   VIDEO_URL,
   VOICE_URL,
   YT_VIDEO_DURATION,

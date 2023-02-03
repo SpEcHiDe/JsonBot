@@ -30,7 +30,9 @@ export function getBot(token: string) {
       });
       // save the token
       bots.set(token, bot);
-    } catch (e) {}
+    } catch (_e) {
+      // console.log(_e);
+    }
   }
   return bot;
 }
