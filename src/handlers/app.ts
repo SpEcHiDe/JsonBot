@@ -6,6 +6,7 @@ import cjr from "./cjr.ts";
 import inline from "./inline.ts";
 import cbdata from "./cbdata.ts";
 import cir from "./cir.ts";
+import cm from "./cm.ts";
 
 export const composer = new Composer();
 
@@ -15,3 +16,4 @@ composer.use(inline);
 composer.use(cir);
 composer.use(cbdata);
 composer.use(cjr);
+composer.use(cm);
