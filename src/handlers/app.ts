@@ -17,3 +17,7 @@ composer.use(cir);
 composer.use(cbdata);
 composer.use(cjr);
 composer.use(cm);
+
+composer.use(async (ctx) => {
+    console.log("UnHandled update", JSON.stringify(ctx))
+});
