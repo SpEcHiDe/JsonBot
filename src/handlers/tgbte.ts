@@ -9,7 +9,7 @@ export default composer;
 
 composer.on("msg:text").filter(
     (ctx) => ctx.msg.forward_from?.username?.toLowerCase() === "botfather",
-    async (ctx) => {
+    async (ctx, next) => {
         const entities = ctx.message?.entities || [];
         const msgText = ctx.message?.text || "";
         // extract bot token
@@ -43,6 +43,8 @@ composer.on("msg:text").filter(
                 reply_to_message_id: ctx.message?.message_id,
             },
         );
+        // https://t.me/c/1493653006/116753
+        await next();
     },
 );
 
