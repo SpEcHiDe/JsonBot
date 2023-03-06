@@ -33,6 +33,7 @@ const VOICE_URL =
     `${TG_FILE_ID_BASEURL}/AwACAgQAAx0EYtH4LwABBYFPY9ZZZBAzxfPoEWOHGwUeKFCrHzoAAmgMAAIRJ7FS39XFVc2yptUtBA/voice.ogg`;
 const YT_VIDEO_URL = "https://youtu.be/JmvCpR45LKA";
 const YT_VIDEO_DURATION = 103;
+const MR_INVALID_SYNTAX = "<code>SYNTAX_IN_VALID</code>";
 // END: MEME RESOURCES
 
 const TG_ALLOWED_UPDATES = [
@@ -63,6 +64,22 @@ const TG_PR_MES = (msg: string) => {
     // 1094034
     return `<pre><code class="language-json">${msg}</code></pre>`;
 };
+const TG_ERR_MES = (error: any) => {
+    try {
+        delete error.parameters;
+        delete error.method;
+        delete error.payload;
+        delete error.name;
+    }
+    catch (_) {
+        /* https://csswizardry.com/2013/04/shame-css/ */
+    }
+    return JSON.stringify(
+        error,
+        null,
+        2,
+    );
+};
 
 export {
     AUDIO_DURATION,
@@ -92,4 +109,6 @@ export {
     VOICE_URL,
     YT_VIDEO_DURATION,
     YT_VIDEO_URL,
+    MR_INVALID_SYNTAX,
+    TG_ERR_MES,
 };
