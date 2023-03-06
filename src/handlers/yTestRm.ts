@@ -15,9 +15,10 @@ export default composer;
 composer.command(
     "rm",
     async (ctx, next) => {
-        const io = ctx.message?.text?.substring(3).trim();
+        let io = ctx.message?.text?.substring(3).trim();
         if (io) {
             let oi = {};
+            //
             try {
                 oi = JSON.parse(io);
             }
