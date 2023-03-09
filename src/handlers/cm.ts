@@ -16,7 +16,7 @@ composer.on("chat_member", async (ctx) => {
             );
             await ctx.api.sendMessage(
                 targetChat,
-                TG_PR_MES(msgToSend),
+                TG_PR_MES(io),
             );
             msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
         }
