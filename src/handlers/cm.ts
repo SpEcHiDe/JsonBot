@@ -5,7 +5,13 @@ export const composer = new Composer();
 
 export default composer;
 
-composer.on("chat_member", async (ctx) => {
+composer.on(
+    [
+        "my_chat_member",
+        "chat_member"
+    ],
+    async (ctx) => {
+        try {
     const targetChat = ctx.chatMember.chat.id;
     let msgToSend = TG_MES_PR(ctx.update);
     if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
@@ -25,4 +31,6 @@ composer.on("chat_member", async (ctx) => {
         targetChat,
         TG_PR_MES(msgToSend),
     );
+        }
+        catch (_) { }
 });
