@@ -25,6 +25,7 @@ import {
     VOICE_URL,
     YT_VIDEO_DURATION,
     YT_VIDEO_URL,
+    A_STICKER_FILE_ID,
 } from "./../consts.ts";
 
 const composer = new Composer();
@@ -210,6 +211,11 @@ composer.on("inline_query", (ctx) => {
                 type: "sticker",
                 id: "ShitDevsSay",
                 sticker_file_id: STICKER_FILE_ID,
+            },
+            {
+                type: "sticker",
+                id: "139343",
+                sticker_file_id: A_STICKER_FILE_ID
             },
         ],
         {
