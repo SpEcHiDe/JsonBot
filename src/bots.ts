@@ -3,7 +3,7 @@ import { parseMode } from "parse_mode";
 
 const bots = new Map<string, Bot<Context>>();
 
-export function getBot(token: string) {
+export function getBot(mode: string, token: string) {
     let bot = bots.get(token);
     if (!bot) {
         try {
@@ -11,6 +11,22 @@ export function getBot(token: string) {
                 client: {
                     // We accept the drawback of webhook replies for typing status.
                     canUseWebhookReply: (method) => method === "sendChatAction",
+                    // customized build urls
+                    buildUrl: (root: string, token: string, method: string) => {
+                        if (mode === "B") {
+                            return `${root}/beta/bot${token}/${method}`;
+                        }
+                        else if (mode === "BT") {
+                            return `${root}/beta/bot${token}/test/${method}`;
+                        }
+                        /* https://t.me/c/1014048870/115877 */
+                        else if (mode === "T") {
+                            return `${root}/bot${token}/test/${method}`;
+                        }
+                        else {
+                            return `${root}/bot${token}/${method}`;
+                        }
+                    }
                 },
             });
             // Sets default parse_mode for ctx.reply

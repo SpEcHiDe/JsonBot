@@ -6,7 +6,7 @@ import { TG_ALLOWED_UPDATES, TG_ENV_S } from "./src/consts.ts";
 
 if (TG_ENV_S.LP) {
     // Create an instance of the `Bot` class and pass your authentication token to it.
-    const bot = getBot(TG_ENV_S.TG_BOT_TOKEN);
+    const bot = getBot(TG_ENV_S.BOT_MODE, TG_ENV_S.TG_BOT_TOKEN);
     if (bot) {
         // You can now register listeners on your bot object `bot`.
         // grammY will call the listeners when users send messages to your bot.
@@ -27,10 +27,16 @@ if (TG_ENV_S.LP) {
         console.log("received ", req);
         if (req.method === "POST") {
             const { pathname } = new URL(req.url);
-            const botToken = pathname.substring(1);
+            let botToken = pathname.substring(1);
+            let botMode = "P";
+            if (botToken.indexOf("/") > -1) {
+                const botOtherTokens = botToken.split("/");
+                botToken = botOtherTokens[1];
+                botMode = botOtherTokens[0];
+            }
             try {
                 // Create an instance of the `Bot` class and pass your authentication token to it.
-                const bot = getBot(botToken);
+                const bot = getBot(botMode, botToken);
                 if (bot) {
                     // You can now register listeners on your bot object `bot`.
                     // grammY will call the listeners when users send messages to your bot.
@@ -44,11 +50,7 @@ if (TG_ENV_S.LP) {
             } catch (err) {
                 console.error(err);
                 return new Response(
-                    JSON.stringify({
-                        "method": "sendMessage",
-                        "chat_id": TG_ENV_S.OWCID,
-                        "text": err.toString().substring(0, 4095),
-                    }),
+                    JSON.stringify({}),
                     {
                         status: 200,
                     },
