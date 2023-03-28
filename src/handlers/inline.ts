@@ -57,6 +57,12 @@ composer.on("inline_query", (ctx) => {
                         "(string) Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.",
                 },
             ],
+            [
+                {
+                    text: "(string) Label text on the button",
+                    callback_data: "(Optional). Data associated with the callback button.",
+                },
+            ],
         ],
     };
     //
