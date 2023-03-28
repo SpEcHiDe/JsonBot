@@ -5,7 +5,7 @@ export const composer = new Composer();
 
 export default composer;
 
-composer.on("callback_query", (ctx) => {
+composer.on("callback_query", (async ctx) => {
     // NOTE: You should always answer,
     // but we want different conditionals to
     // be able to answer to differently
