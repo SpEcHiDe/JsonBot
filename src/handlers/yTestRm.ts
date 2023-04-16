@@ -3,8 +3,8 @@ import { Message } from "grammy/types.ts";
 import {
     MR_INVALID_SYNTAX,
     STICKER_FILE_ID,
-    TG_PR_MES,
     TG_ERR_MES,
+    TG_PR_MES,
 } from "../consts.ts";
 // import { msgUpdate } from "./msg.ts";
 
@@ -21,18 +21,20 @@ composer.command(
             //
             try {
                 oi = JSON.parse(io);
-            }
-            catch (error) {
+            } catch (error) {
                 return await ctx.reply(
                     TG_PR_MES(
-                        TG_ERR_MES(error.toString())
-                    )
+                        TG_ERR_MES(error.toString()),
+                    ),
                 );
             }
             try {
-                let ishow: Message = await ctx.replyWithSticker(STICKER_FILE_ID, {
-                    reply_markup: oi
-                });
+                let ishow: Message = await ctx.replyWithSticker(
+                    STICKER_FILE_ID,
+                    {
+                        reply_markup: oi,
+                    },
+                );
                 // https://t.me/c/1493653006/116801
                 // return await msgUpdate(
                 //     {
@@ -41,16 +43,14 @@ composer.command(
                 //         }
                 //     }
                 // );
-            }
-            catch (error) {
+            } catch (error) {
                 await ctx.reply(
                     TG_PR_MES(
-                        TG_ERR_MES(error)
-                    )
+                        TG_ERR_MES(error),
+                    ),
                 );
             }
-        }
-        else {
+        } else {
             await ctx.reply(MR_INVALID_SYNTAX);
         }
         // https://t.me/c/1493653006/116753

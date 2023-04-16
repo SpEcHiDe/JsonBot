@@ -8,29 +8,29 @@ export default composer;
 composer.on(
     [
         "my_chat_member",
-        "chat_member"
+        "chat_member",
     ],
     async (ctx) => {
         try {
-    const targetChat = ctx.chatMember.chat.id;
-    let msgToSend = TG_MES_PR(ctx.update);
-    if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
-        while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
-            const io: string = msgToSend.substring(
-                0,
-                TG_MAX_MESSAGE_LENGTH,
-            );
-            await ctx.api.sendMessage(
+            const targetChat = ctx.chatMember.chat.id;
+            let msgToSend = TG_MES_PR(ctx.update);
+            if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+                while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+                    const io: string = msgToSend.substring(
+                        0,
+                        TG_MAX_MESSAGE_LENGTH,
+                    );
+                    await ctx.api.sendMessage(
+                        targetChat,
+                        TG_PR_MES(io),
+                    );
+                    msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
+                }
+            }
+            return await ctx.api.sendMessage(
                 targetChat,
-                TG_PR_MES(io),
+                TG_PR_MES(msgToSend),
             );
-            msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
-        }
-    }
-    return await ctx.api.sendMessage(
-        targetChat,
-        TG_PR_MES(msgToSend),
-    );
-        }
-        catch (_) { }
-});
+        } catch (_) {}
+    },
+);

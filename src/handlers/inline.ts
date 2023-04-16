@@ -1,5 +1,6 @@
 import { Composer } from "grammy/mod.ts";
 import {
+    A_STICKER_FILE_ID,
     AUDIO_DURATION,
     AUDIO_URL,
     GIF_2_DURATION,
@@ -13,9 +14,7 @@ import {
     SMAII_STICKER_HEIGHT,
     SMAII_STICKER_URL,
     SMAII_STICKER_WIDTH,
-    A_STICKER_FILE_ID,
     STICKER_FILE_ID,
-    V_STICKER_FILE_ID,
     STICKER_HEIGHT,
     STICKER_URL,
     STICKER_WIDTH,
@@ -23,11 +22,11 @@ import {
     TG_MAX_MESSAGE_LENGTH,
     TG_MES_PR,
     TG_PR_MES,
+    V_STICKER_FILE_ID,
     VIDEO_URL,
     VOICE_URL,
     YT_VIDEO_DURATION,
     YT_VIDEO_URL,
-
 } from "./../consts.ts";
 
 const composer = new Composer();
@@ -60,7 +59,8 @@ composer.on("inline_query", (ctx) => {
             [
                 {
                     text: "(string) Label text on the button",
-                    callback_data: "(Optional). Data associated with the callback button.",
+                    callback_data:
+                        "(Optional). Data associated with the callback button.",
                 },
             ],
         ],
@@ -218,7 +218,7 @@ composer.on("inline_query", (ctx) => {
             {
                 type: "sticker",
                 id: "13TG93AT43",
-                sticker_file_id: A_STICKER_FILE_ID
+                sticker_file_id: A_STICKER_FILE_ID,
             },
             {
                 type: "sticker",
@@ -228,7 +228,7 @@ composer.on("inline_query", (ctx) => {
             {
                 type: "sticker",
                 id: "139343",
-                sticker_file_id: V_STICKER_FILE_ID
+                sticker_file_id: V_STICKER_FILE_ID,
             },
         ],
         {

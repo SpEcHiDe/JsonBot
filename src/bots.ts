@@ -15,18 +15,15 @@ export function getBot(mode: string, token: string) {
                     buildUrl: (root: string, token: string, method: string) => {
                         if (mode === "B") {
                             return `${root}/beta/bot${token}/${method}`;
-                        }
-                        else if (mode === "BT") {
+                        } else if (mode === "BT") {
                             return `${root}/beta/bot${token}/test/${method}`;
-                        }
-                        /* https://t.me/c/1014048870/115877 */
+                        } /* https://t.me/c/1014048870/115877 */
                         else if (mode === "T") {
                             return `${root}/bot${token}/test/${method}`;
-                        }
-                        else {
+                        } else {
                             return `${root}/bot${token}/${method}`;
                         }
-                    }
+                    },
                 },
             });
             // Sets default parse_mode for ctx.reply
