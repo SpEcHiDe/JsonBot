@@ -54,12 +54,22 @@ export const TG_ALLOWED_UPDATES = [
     "chat_join_request",
 ];
 export const TG_ENV_S = Deno.env.toObject();
+const KW_TG_ERR = (msg: string): string => {
+    return msg
+        // 128207
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;");
+    // not sure why this is not required
+    // .replaceAll(">", "&rt;");
+};
 export const TG_MES_PR = (upd: Update) => {
     // https://stackoverflow.com/a/3515761/4723940
-    return JSON.stringify(
-        upd,
-        null,
-        2,
+    return KW_TG_ERR(
+        JSON.stringify(
+            upd,
+            null,
+            2,
+        ),
     );
     // <= https://t.me/c/1220993104/1/1353555
 };
