@@ -1,17 +1,16 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MES_PR, TG_PR_MES } from "./../consts.ts";
+import { TG_MES_PR, KW_TG_SM } from "./../consts.ts";
 
 export const composer = new Composer();
 
 export default composer;
 
 composer.on("chosen_inline_result", (ctx) => {
-    return ctx.api.sendMessage(
+    return KW_TG_SM(
+        ctx,
         ctx.chosenInlineResult.from.id,
-        TG_PR_MES(
-            TG_MES_PR(
-                ctx.update,
-            ),
+        TG_MES_PR(
+            ctx.update,
         ),
     );
 });

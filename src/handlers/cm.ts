@@ -1,5 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, TG_PR_MES } from "./../consts.ts";
+import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, KW_TG_SM } from "./../consts.ts";
 
 export const composer = new Composer();
 
@@ -12,7 +12,13 @@ composer.on(
     ],
     async (ctx) => {
         try {
-            const targetChat = ctx.chatMember.chat.id;
+            let targetChat = 0;
+            if (ctx.chatMember) {
+                targetChat = ctx.chatMember.chat.id;
+            }
+            else if (ctx.myChatMember) {
+                targetChat = ctx.myChatMember.chat.id;
+            }
             let msgToSend = TG_MES_PR(ctx.update);
             if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
                 while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
@@ -20,16 +26,18 @@ composer.on(
                         0,
                         TG_MAX_MESSAGE_LENGTH,
                     );
-                    await ctx.api.sendMessage(
+                    await KW_TG_SM(
+                        ctx,
                         targetChat,
-                        TG_PR_MES(io),
+                        io,
                     );
                     msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
                 }
             }
-            return await ctx.api.sendMessage(
+            return await KW_TG_SM(
+                ctx,
                 targetChat,
-                TG_PR_MES(msgToSend),
+                msgToSend,
             );
         } catch (_) {}
     },

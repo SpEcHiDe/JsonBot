@@ -1,5 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MES_PR, TG_PR_MES } from "./../consts.ts";
+import { TG_MES_PR, KW_TG_SM } from "./../consts.ts";
 
 export const composer = new Composer();
 
@@ -12,12 +12,11 @@ composer.on("callback_query", async (ctx) => {
     // (and we can only answer once)
     // so we don't always answer here.
     await ctx.answerCallbackQuery();
-    return ctx.api.sendMessage(
+    return await KW_TG_SM(
+        ctx,
         ctx.callbackQuery.from.id,
-        TG_PR_MES(
-            TG_MES_PR(
-                ctx.update,
-            ),
+        TG_MES_PR(
+            ctx.update,
         ),
     );
 });

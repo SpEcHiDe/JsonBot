@@ -65,7 +65,18 @@ export const TG_MES_PR = (upd: Update) => {
 };
 export const TG_PR_MES = (msg: string) => {
     // 1094034
-    return `<pre><code class="language-json">${msg}</code></pre>`;
+    return {
+        text: msg,
+        // 128202
+        entities: [
+            {
+                type: "pre",
+                offset: 0,
+                length: msg.length,
+                language: "json",
+            },
+        ],
+    };
 };
 export const TG_ERR_MES = (error: any) => {
     try {
@@ -81,4 +92,14 @@ export const TG_ERR_MES = (error: any) => {
         null,
         2,
     );
+};
+export const KW_TG_SM = async (ctx, userId: number, msg: string) => {
+    const { text, entities } = TG_PR_MES(msg);
+    return await ctx.api.sendMessage(
+        userId,
+        text,
+        {
+            entities: entities
+        }
+    )
 };
