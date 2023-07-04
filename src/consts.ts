@@ -18,28 +18,28 @@ export const SMAII_STICKER_HEIGHT = 100;
 export const SMAII_STICKER_URL =
     `https://wsrv.nl/?url=${STICKER_URL}&w=${SMAII_STICKER_WIDTH}&h=${SMAII_STICKER_HEIGHT}`;
 export const AUDIO_URL =
-    `${TG_FILE_ID_BASEURL}/CQACAgQAAx0EYtH4LwABBYFQY9ZZZURV9eQd4i98OMiq6CGXRtcAAmkMAAIRJ7FSKA6JG9b_n54tBA/audio.mp3`;
+    `${TG_FILE_ID_BASEURL}/CQACAgQAAx0ETVHxPQACEppko5nyI2SNuzh0_ac1j1qUZU-bgAACaQwAAhEnsVJKki-yo4Ii7S8E/audio.mp3`;
 export const AUDIO_DURATION = 19;
 export const GIF_URL =
-    `${TG_FILE_ID_BASEURL}/CgACAgQAAx0EYtH4LwABBYGJY9ZeRwWhvRsBkOWwDfzt920wAwADbwwAAhEnsVJBCGoFT-Oz_C0E/animation.gif`;
+    `${TG_FILE_ID_BASEURL}/CgACAgIAAx0ETVHxPQACEp1ko5nzGJuPS7bxWaJzP0NAvhLngAACvhEAAh3uYEq2tzRs0BHTBy8E/animation.gif`;
 export const GIF_WIDTH = 320;
 export const GIF_HEIGHT = 134;
 export const GIF_DURATION = 3;
 export const GIF_2_URL =
-    `${TG_FILE_ID_BASEURL}/CgACAgIAAx0EYtH4LwABBYF8Y9Zc-Yc8FsmaiHNLOXUoKsuY0OQAAjwmAAJNExFKKwaTGIOiBqwtBA/mpeg4.mp4`;
+    `${TG_FILE_ID_BASEURL}/CgACAgIAAx0ETVHxPQACEp1ko5nzGJuPS7bxWaJzP0NAvhLngAACvhEAAh3uYEq2tzRs0BHTBy8E/mpeg4.mp4`;
 export const GIF_2_WIDTH = 848;
 export const GIF_2_HEIGHT = 384;
 export const GIF_2_DURATION = 1;
 export const VIDEO_URL =
-    `${TG_FILE_ID_BASEURL}/BAACAgEAAx0EYtH4LwABBYF1Y9Zcl0zhprqtWg5WffhQ4p8pAosAAmIEAAJcc7FG-LyqRBJwnvItBA/video.mp4`;
+    `${TG_FILE_ID_BASEURL}/BAACAgEAAx0ETVHxPQACEptko5nyp8wNcA3weMwSNU49QXDjJQACYgQAAlxzsUaAS1fnZpA2nC8E/video.mp4`;
 export const VOICE_URL =
-    `${TG_FILE_ID_BASEURL}/AwACAgQAAx0EYtH4LwABBYFPY9ZZZBAzxfPoEWOHGwUeKFCrHzoAAmgMAAIRJ7FS39XFVc2yptUtBA/voice.ogg`;
+    `${TG_FILE_ID_BASEURL}/AwACAgQAAx0ETVHxPQACEplko5nylwK28UAWcx5KRiucCtIvlAACaAwAAhEnsVI0A3WL3R36-i8E/voice.ogg`;
 export const YT_VIDEO_URL = "https://youtu.be/JmvCpR45LKA";
 export const YT_VIDEO_DURATION = 103;
 export const MR_INVALID_SYNTAX = "<code>SYNTAX_IN_VALID</code>";
 // END: MEME RESOURCES
 
-export const TG_ALLOWED_UPDATES = [
+export const TG_ALLOWED_UPDATES: Array<string> = [
     "message",
     "edited_message",
     "channel_post",

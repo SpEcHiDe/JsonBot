@@ -12,7 +12,11 @@ composer.on(
     ],
     async (ctx) => {
         try {
-            const targetChat = ctx.chatMember.chat.id;
+            const targetChat = ctx.chatMember?.chat.id ||
+                ctx.myChatMember?.chat.id || undefined;
+            if (!targetChat) {
+                return;
+            }
             let msgToSend = TG_MES_PR(ctx.update);
             if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
                 while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
@@ -31,6 +35,8 @@ composer.on(
                 targetChat,
                 TG_PR_MES(msgToSend),
             );
-        } catch (_) {}
+        } catch (_) {
+            // TODO: figure out a better logik
+        }
     },
 );

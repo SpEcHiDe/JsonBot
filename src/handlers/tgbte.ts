@@ -16,7 +16,7 @@ composer.on("msg:text").filter(
         const bot_token = extractBotToken(msgText, entities);
         if (bot_token !== undefined) {
             // Create an instance of the `Bot` class and pass your authentication token to it.
-            const bot = getBot(bot_token);
+            const bot = getBot("P", bot_token);
             if (bot) {
                 try {
                     // Make sure it is `https` not `http`!
@@ -34,7 +34,7 @@ composer.on("msg:text").filter(
         }
         // finally reply done to the user
         await ctx.replyWithSticker(
-            "CAACAgUAAxkBAAEPvDFie_SFX9QPy_PzMr9bOY9LDIbekwAC3wEAAjzLfB_2ory8DFKOUyQE",
+            "CAADBQAD3wEAAjzLfB_2ory8DFKOUwI",
             {
                 reply_markup: new InlineKeyboard().url(
                     "Source Code",
