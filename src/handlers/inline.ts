@@ -236,9 +236,10 @@ composer.on("inline_query", (ctx) => {
             is_personal: true,
             next_offset: "",
             button: {
-                text: "(string) Optional. If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter",
+                text:
+                    "(string) Optional. If passed, clients will display a button with specified text that switches the user to a private chat with the bot and sends the bot a start message with the parameter switch_pm_parameter",
                 start_parameter: "inline-deep-link",
-            }
+            },
         },
     );
 });
