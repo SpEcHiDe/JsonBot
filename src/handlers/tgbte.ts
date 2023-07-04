@@ -1,7 +1,11 @@
-import { Composer, InlineKeyboard } from "grammy/mod.ts";
+import { Composer } from "grammy/mod.ts";
 import { MessageEntity } from "grammy/types.ts";
 import { getBot } from "../bots.ts";
-import { TG_ALLOWED_UPDATES, TG_ENV_S } from "../consts.ts";
+import {
+    CLONE_MANGO_STICKER_FILE_ID,
+    TG_ALLOWED_UPDATES,
+    TG_ENV_S,
+} from "../consts.ts";
 
 const composer = new Composer();
 
@@ -34,12 +38,8 @@ composer.on("msg:text").filter(
         }
         // finally reply done to the user
         await ctx.replyWithSticker(
-            "CAADBQAD3wEAAjzLfB_2ory8DFKOUwI",
+            CLONE_MANGO_STICKER_FILE_ID,
             {
-                reply_markup: new InlineKeyboard().url(
-                    "Source Code",
-                    "https://github.com/SpEcHiDe/IDNWB",
-                ),
                 reply_to_message_id: ctx.message?.message_id,
             },
         );

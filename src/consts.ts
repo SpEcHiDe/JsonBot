@@ -6,6 +6,7 @@ export const TG_MAX_CAPTION_LENGTH = 1024;
 const TG_FILE_ID_BASEURL = "https://slow.transload.workers.dev";
 
 // BEGIN: MEME RESOURCES
+export const CLONE_MANGO_STICKER_FILE_ID = "CAADBQAD3wEAAjzLfB_2ory8DFKOUwI";
 export const A_STICKER_FILE_ID = "CAADAgADG3UBAAFji0YMqkd3zY0-GJUC";
 export const STICKER_FILE_ID = "CAADAgADpAwAAqoUyEoBbu6msnyOHAI";
 export const V_STICKER_FILE_ID = "BAADAgAD_xMAAkZPsUs6D0o2CG9D6wI";
