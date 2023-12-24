@@ -2,6 +2,15 @@
 
 - a simple telegram bot that returns the `telegram-bot-api` json of all the sent messages
 
+Can be found on **Telegram Production Server** as
+👉 [@useTGxBot](https://useTGxBot.t.me)
+
+### OR
+
+Can be found on **Telegram Test Server** as
+👉 [@ShowJsonBot](https://t.me/ShowJsonBot)
+
+
 ### 🤔 why ~~yet another~~ Telegram Bot ?
 
 did not find a telegram bot, which could return with all the latest [telegram features](https://t.me/BotNews/64).
