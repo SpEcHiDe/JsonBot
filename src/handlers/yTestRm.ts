@@ -15,7 +15,7 @@ export default composer;
 composer.command(
     "rm",
     async (ctx, next) => {
-        let io = ctx.message?.text?.substring(3).trim();
+        const io = ctx.match;
         if (io) {
             let oi = {};
             //
@@ -29,9 +29,10 @@ composer.command(
                 );
             }
             try {
-                let ishow: Message = await ctx.replyWithSticker(
+                const ishow: Message = await ctx.replyWithSticker(
                     STICKER_FILE_ID,
                     {
+                        // @ts-ignore
                         reply_markup: oi,
                     },
                 );
