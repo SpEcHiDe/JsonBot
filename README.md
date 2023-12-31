@@ -10,7 +10,6 @@ Can be found on **Telegram Production Server** as
 Can be found on **Telegram Test Server** as
 👉 [@ShowJsonBot](https://t.me/ShowJsonBot)
 
-
 ### 🤔 why ~~yet another~~ Telegram Bot ?
 
 did not find a telegram bot, which could return with all the latest [telegram features](https://t.me/BotNews/64).

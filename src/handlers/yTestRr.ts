@@ -1,10 +1,6 @@
 import { Composer } from "grammy/mod.ts";
-import { ReactionTypeEmoji, ReactionTypeCustomEmoji } from "grammy/types.ts";
-import {
-    MR_INVALID_SYNTAX,
-    TG_ERR_MES,
-    TG_PR_MES,
-} from "../consts.ts";
+import { ReactionTypeCustomEmoji, ReactionTypeEmoji } from "grammy/types.ts";
+import { MR_INVALID_SYNTAX, TG_ERR_MES, TG_PR_MES } from "../consts.ts";
 
 export const composer = new Composer();
 
@@ -15,18 +11,19 @@ composer.command(
     async (ctx, next) => {
         const io = ctx.match;
         if (io) {
-            let oi: ReactionTypeEmoji | ReactionTypeCustomEmoji | undefined = undefined;
+            let oi: ReactionTypeEmoji | ReactionTypeCustomEmoji | undefined =
+                undefined;
             try {
                 parseInt(io);
                 oi = {
                     type: "custom_emoji",
-                    custom_emoji_id: io
-                }
+                    custom_emoji_id: io,
+                };
             } catch (_) {
                 oi = {
                     type: "emoji",
                     // @ts-ignore
-                    emoji: io
+                    emoji: io,
                 };
             }
             if (oi !== undefined) {
@@ -36,8 +33,8 @@ composer.command(
                         ctx.msg.message_id,
                         [oi],
                         {
-                            is_big: true
-                        }
+                            is_big: true,
+                        },
                     );
                 } catch (error) {
                     await ctx.reply(
@@ -46,13 +43,12 @@ composer.command(
                         ),
                     );
                 }
-            }
-            else {
+            } else {
                 await ctx.reply(
                     TG_PR_MES(
                         TG_ERR_MES({
                             "error": true,
-                            "message": "invalid ReactionType"
+                            "message": "invalid ReactionType",
                         }),
                     ),
                 );
