@@ -13,19 +13,19 @@ composer.command(
         if (io) {
             let oi: ReactionTypeEmoji | ReactionTypeCustomEmoji | undefined =
                 undefined;
-            try {
-                parseInt(io);
-                oi = {
-                    type: "custom_emoji",
-                    custom_emoji_id: io,
-                };
-            } catch (_) {
+            // try {
+            //     parseInt(io);
+            //     oi = {
+            //         type: "custom_emoji",
+            //         custom_emoji_id: io,
+            //     };
+            // } catch (_) {
                 oi = {
                     type: "emoji",
                     // @ts-ignore
                     emoji: io,
                 };
-            }
+            // }
             if (oi !== undefined) {
                 try {
                     await ctx.api.setMessageReaction(
