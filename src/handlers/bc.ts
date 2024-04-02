@@ -5,13 +5,13 @@ export const composer = new Composer();
 
 export default composer;
 
-composer.on("chat_join_request", (ctx) => {
+composer.on("business_connection", (ctx) => {
     return ctx.api.sendMessage(
-        ctx.chatJoinRequest.user_chat_id,
+        ctx.businessConnection.user_chat_id,
         TG_PR_MES(
             TG_MES_PR(
                 ctx.update,
             ),
-        ),
+        )
     );
 });

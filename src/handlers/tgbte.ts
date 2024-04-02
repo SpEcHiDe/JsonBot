@@ -12,7 +12,11 @@ const composer = new Composer();
 export default composer;
 
 composer.on("msg:text").filter(
-    (ctx) => ctx.msg.forward_from?.username?.toLowerCase() === "botfather",
+    (ctx) => (
+        ctx.msg.forward_origin !== undefined &&
+        ctx.msg.forward_origin.type == "user" &&
+        ctx.msg.forward_origin.sender_user.username?.toLowerCase() === "botfather"
+    ),
     async (ctx, next) => {
         const entities = ctx.message?.entities || [];
         const msgText = ctx.message?.text || "";
@@ -20,7 +24,7 @@ composer.on("msg:text").filter(
         const bot_token = extractBotToken(msgText, entities);
         if (bot_token !== undefined) {
             // Create an instance of the `Bot` class and pass your authentication token to it.
-            const bot = getBot("P", bot_token);
+            const bot = getBot("P", bot_token);  // TODO
             if (bot) {
                 try {
                     // Make sure it is `https` not `http`!

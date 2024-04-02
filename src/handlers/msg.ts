@@ -31,6 +31,9 @@ composer.on(
         "edited_message",
         "channel_post",
         "edited_channel_post",
+        "business_message",
+        "edited_business_message",
+        "deleted_business_messages",
     ],
     msgUpdate,
 );

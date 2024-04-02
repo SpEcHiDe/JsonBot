@@ -4,6 +4,7 @@ import tgbte from "./tgbte.ts";
 import rm from "./yTestRm.ts";
 import rr from "./yTestRr.ts";
 import msg from "./msg.ts";
+import bc from "./bc.ts";
 import mr from "./mr.ts";
 import inline from "./inline.ts";
 import cir from "./cir.ts";
@@ -13,10 +14,16 @@ import cjr from "./cjr.ts";
 
 export const composer = new Composer();
 
+// composer.use(async (ctx, next) => {
+//     console.log(ctx.update);
+//     await next();
+// })
+
 composer.use(tgbte);
 composer.use(rm);
 composer.use(rr);
 composer.use(msg);
+composer.use(bc);
 composer.use(mr);
 composer.use(inline);
 composer.use(cir);
