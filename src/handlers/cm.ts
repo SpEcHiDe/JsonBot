@@ -40,3 +40,41 @@ composer.on(
         }
     },
 );
+
+
+composer.on(
+    [
+        "chat_boost",
+        "removed_chat_boost",
+    ],
+    async (ctx) => {
+        try {
+            const targetChat = ctx.chatBoost?.chat.id ||
+                ctx.removedChatBoost?.chat.id || undefined;
+            if (!targetChat) {
+                return;
+            }
+            let msgToSend = TG_MES_PR(ctx.update);
+            if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+                while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+                    const io: string = msgToSend.substring(
+                        0,
+                        TG_MAX_MESSAGE_LENGTH,
+                    );
+                    await ctx.api.sendMessage(
+                        targetChat,
+                        TG_PR_MES(io),
+                    );
+                    msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
+                }
+            }
+            return await ctx.api.sendMessage(
+                targetChat,
+                TG_PR_MES(msgToSend),
+            );
+        } catch (_) {
+            // TODO: figure out a better logik
+        }
+    },
+);
+
