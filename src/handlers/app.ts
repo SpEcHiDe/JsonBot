@@ -11,8 +11,9 @@ import cir from "./cir.ts";
 import cbdata from "./cbdata.ts";
 import cm from "./cm.ts";
 import cjr from "./cjr.ts";
+import { MyContext } from "../bots.ts";
 
-export const composer = new Composer();
+export const composer = new Composer<MyContext>();
 
 // composer.use(async (ctx, next) => {
 //     console.log(ctx.update);
@@ -33,4 +34,6 @@ composer.use(cm);
 composer.use(cjr);
 // TODO: 2
 
-composer.use((ctx) => console.log("UnHandled update", JSON.stringify(ctx)));
+composer.use(
+    (ctx) => console.log("UnHandled update", JSON.stringify(ctx))
+);

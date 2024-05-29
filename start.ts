@@ -1,5 +1,4 @@
 import { webhookCallback } from "grammy/mod.ts";
-import { serve } from "std/http/server.ts";
 import { composer } from "./src/handlers/app.ts";
 import { getBot } from "./src/bots.ts";
 import { TG_ALLOWED_UPDATES, TG_ENV_S } from "./src/consts.ts";
@@ -22,7 +21,7 @@ if (TG_ENV_S.LP) {
         Deno.addSignalListener("SIGTERM", () => bot.stop());
     }
 } else {
-    serve(async (req) => {
+    Deno.serve(async (req) => {
         // 2016e33165779f658433ef106e12e70d4e5bc2da
         console.log("received ", req);
         if (req.method === "POST") {

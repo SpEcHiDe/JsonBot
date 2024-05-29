@@ -6,8 +6,9 @@ import {
     TG_ALLOWED_UPDATES,
     TG_ENV_S,
 } from "../consts.ts";
+import { MyContext } from "../ctx.flavour.ts";
 
-const composer = new Composer();
+const composer = new Composer<MyContext>();
 
 export default composer;
 
@@ -24,7 +25,7 @@ composer.on("msg:text").filter(
         const bot_token = extractBotToken(msgText, entities);
         if (bot_token !== undefined) {
             // Create an instance of the `Bot` class and pass your authentication token to it.
-            const bot = getBot("P", bot_token);  // TODO
+            const bot = getBot(ctx.botConfig.botMode, bot_token);
             if (bot) {
                 try {
                     // Make sure it is `https` not `http`!

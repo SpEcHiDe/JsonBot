@@ -6,9 +6,10 @@ import {
     TG_ERR_MES,
     TG_PR_MES,
 } from "../consts.ts";
+import { MyContext } from "../ctx.flavour.ts";
 // import { msgUpdate } from "./msg.ts";
 
-export const composer = new Composer();
+export const composer = new Composer<MyContext>();
 
 export default composer;
 
@@ -29,13 +30,27 @@ composer.command(
                 );
             }
             try {
-                const ishow: Message = await ctx.replyWithSticker(
-                    STICKER_FILE_ID,
-                    {
-                        // @ts-ignore
-                        reply_markup: oi,
-                    },
-                );
+                let ishow = undefined;
+                if (ctx.botConfig.botMode.indexOf("T") === -1) {
+                    ishow = await ctx.replyWithSticker(
+                        STICKER_FILE_ID,
+                        {
+                            // @ts-ignore
+                            reply_markup: oi,
+                        },
+                    );
+                }
+                else {
+                    ishow = await ctx.reply(
+                        `<code>${STICKER_FILE_ID}</code>`,
+                        {
+                            // @ts-ignore
+                            reply_markup: oi,
+                            parse_mode: "HTML"
+                        },
+                    );
+                }
+                
                 // https://t.me/c/1493653006/116801
                 // return await msgUpdate(
                 //     {
