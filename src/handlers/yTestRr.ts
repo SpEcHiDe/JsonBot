@@ -7,14 +7,13 @@ export const composer = new Composer();
 export default composer;
 
 composer.on(
-    ":text"
-).filter(
-    async ctx => {
-        return ctx?.msg?.text !== undefined && ctx.msg.text.startsWith("/rr ")
-    },
+    ":text",
     async (ctx, next) => {
-        const io = ctx.match;
-        if (io) {
+        if (
+            ctx?.msg?.text !== undefined &&
+            ctx.msg.text.startsWith("/rr ")
+        ) {
+            const io = ctx.msg.text.substring(4).trim();
             let oi: ReactionTypeEmoji | ReactionTypeCustomEmoji | undefined =
                 undefined;
             // try {
@@ -57,8 +56,6 @@ composer.on(
                     ),
                 );
             }
-        } else {
-            await ctx.reply(MR_INVALID_SYNTAX);
         }
         // https://t.me/c/1493653006/116753
         await next();
