@@ -13,10 +13,14 @@ export const composer = new Composer<MyContext>();
 
 export default composer;
 
-composer.command(
-    "rm",
+composer.on(
+    ":text"
+).filter(
+    async ctx => {
+        return ctx?.msg?.text !== undefined && ctx.msg.text.startsWith("/rm ")
+    },
     async (ctx, next) => {
-        const io = ctx.match;
+        const io = ctx.msg.text.substring(4).trim();
         if (io) {
             let oi = {};
             //

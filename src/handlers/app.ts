@@ -1,6 +1,6 @@
 import { Composer } from "grammy/mod.ts";
 
-import tgbte from "./tgbte.ts";
+// import tgbte from "./tgbte.ts";
 import rm from "./yTestRm.ts";
 import rr from "./yTestRr.ts";
 import msg from "./msg.ts";
@@ -20,7 +20,7 @@ export const composer = new Composer<MyContext>();
 //     await next();
 // })
 
-composer.use(tgbte);
+// composer.use(tgbte);
 composer.use(rm);
 composer.use(rr);
 composer.use(msg);

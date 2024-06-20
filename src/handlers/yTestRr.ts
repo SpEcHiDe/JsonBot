@@ -6,8 +6,12 @@ export const composer = new Composer();
 
 export default composer;
 
-composer.command(
-    "rr",
+composer.on(
+    ":text"
+).filter(
+    async ctx => {
+        return ctx?.msg?.text !== undefined && ctx.msg.text.startsWith("/rr ")
+    },
     async (ctx, next) => {
         const io = ctx.match;
         if (io) {
