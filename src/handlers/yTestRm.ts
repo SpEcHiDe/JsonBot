@@ -14,7 +14,11 @@ export const composer = new Composer<MyContext>();
 export default composer;
 
 composer.on(
-    ":text",
+    [
+        "message:text",
+        "channel_post:text",
+        "business_message:text",
+    ],
     async (ctx, next) => {
         if (
             ctx?.msg?.text !== undefined &&
