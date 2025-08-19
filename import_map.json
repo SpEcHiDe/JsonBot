@@ -1,7 +1,6 @@
 {
     "imports": {
         "std/": "https://deno.land/std@0.224.0/",
-        "grammy/": "https://ghc.deno.dev/grammyjs/grammY@0f0c320/src/",
-        "parse_mode": "https://ghc.deno.dev/grammyjs/parse-mode@713f1a6/src/mod.ts"
+        "grammy/": "https://ghc.deno.dev/grammyjs/grammY@c13ddab/src/"
     }
 }
