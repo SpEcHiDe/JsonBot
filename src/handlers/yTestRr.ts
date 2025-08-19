@@ -58,6 +58,9 @@ composer.on(
                             "message": "invalid ReactionType",
                         }),
                     ),
+                    {
+                        parse_mode: "HTML",
+                    }
                 );
             }
         }

@@ -15,12 +15,18 @@ export async function msgUpdate(ctx: Context) {
             );
             await ctx.reply(
                 TG_PR_MES(io),
+                {
+                    parse_mode: "HTML",
+                }
             );
             msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
         }
     }
     return await ctx.reply(
         TG_PR_MES(msgToSend),
+        {
+            parse_mode: "HTML",
+        }
     );
 }
 

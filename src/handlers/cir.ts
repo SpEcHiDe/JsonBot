@@ -13,5 +13,8 @@ composer.on("chosen_inline_result", (ctx) => {
                 ctx.update,
             ),
         ),
+        {
+            parse_mode: "HTML",
+        }
     );
 });

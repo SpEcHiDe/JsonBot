@@ -12,6 +12,9 @@ composer.on("business_connection", (ctx) => {
             TG_MES_PR(
                 ctx.update,
             ),
-        )
+        ),
+        {
+            parse_mode: "HTML",
+        }
     );
 });

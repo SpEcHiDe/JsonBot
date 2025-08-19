@@ -19,5 +19,8 @@ composer.on("callback_query", async (ctx) => {
                 ctx.update,
             ),
         ),
+        {
+            parse_mode: "HTML",
+        }
     );
 });

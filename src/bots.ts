@@ -1,5 +1,4 @@
 import { Bot, GrammyError, HttpError } from "grammy/mod.ts";
-import { parseMode } from "parse_mode";
 import { MyContext } from "./ctx.flavour.ts";
 
 const bots = new Map<string, Bot<MyContext>>();
@@ -27,8 +26,6 @@ export function getBot(mode: string, token: string) {
                     },
                 },
             });
-            // Sets default parse_mode for ctx.reply
-            bot.api.config.use(parseMode("HTML"));
             // https://t.me/grammyjs/116198
             bot.use(async (ctx, next): Promise<void> => {
 				// take time before

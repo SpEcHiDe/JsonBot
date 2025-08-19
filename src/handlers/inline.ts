@@ -70,6 +70,7 @@ composer.on("inline_query", (ctx) => {
         message_text: TG_PR_MES(
             msgToSend.substring(0, TG_MAX_CAPTION_LENGTH),
         ),
+        parse_mode: "HTML",
     };
     const inputTextMessageContent = {
         message_text: `<a href="${YT_VIDEO_URL}">&#x200b;</a>${
@@ -77,6 +78,7 @@ composer.on("inline_query", (ctx) => {
                 msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH),
             )
         }`,
+        parse_mode: "HTML",
     };
     const msgCaption = TG_PR_MES(
         msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH),
@@ -131,6 +133,7 @@ composer.on("inline_query", (ctx) => {
                 description:
                     "(string) Optional. Short description of the result",
                 caption: msgCaption,
+                parse_mode: "HTML",
                 reply_markup: reply_markup,
                 // input_message_content:
             },
@@ -145,6 +148,7 @@ composer.on("inline_query", (ctx) => {
                 thumbnail_mime_type: "image/jpeg",
                 title: "(string) Title of the result",
                 caption: msgCaption,
+                parse_mode: "HTML",
                 reply_markup: reply_markup,
                 // input_message_content:
             },
@@ -159,6 +163,7 @@ composer.on("inline_query", (ctx) => {
                 thumbnail_mime_type: "image/jpeg",
                 title: "(string) Title of the result",
                 caption: msgCaption,
+                parse_mode: "HTML",
                 reply_markup: reply_markup,
                 // input_message_content:
             },
@@ -170,6 +175,7 @@ composer.on("inline_query", (ctx) => {
                 thumbnail_url: SMAII_STICKER_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
+                parse_mode: "HTML",
                 video_width: 0,
                 video_height: 0,
                 video_duration: YT_VIDEO_DURATION,
@@ -186,6 +192,7 @@ composer.on("inline_query", (ctx) => {
                 thumbnail_url: SMAII_STICKER_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
+                parse_mode: "HTML",
                 video_width: 0,
                 video_height: 0,
                 video_duration: YT_VIDEO_DURATION,
@@ -200,6 +207,7 @@ composer.on("inline_query", (ctx) => {
                 audio_url: AUDIO_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
+                parse_mode: "HTML",
                 performer: "(string) Optional. Performer",
                 audio_duration: AUDIO_DURATION,
                 reply_markup: reply_markup,
@@ -211,6 +219,7 @@ composer.on("inline_query", (ctx) => {
                 voice_url: VOICE_URL,
                 title: "(string) Title of the result",
                 caption: msgCaption,
+                parse_mode: "HTML",
                 voice_duration: AUDIO_DURATION,
                 reply_markup: reply_markup,
                 // input_message_content:

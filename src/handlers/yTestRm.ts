@@ -34,6 +34,9 @@ composer.on(
                     TG_PR_MES(
                         TG_ERR_MES(error.toString()),
                     ),
+                    {
+                        parse_mode: "HTML",
+                    }
                 );
             }
             try {
@@ -44,6 +47,7 @@ composer.on(
                         {
                             // @ts-ignore
                             reply_markup: oi,
+                            parse_mode: "HTML",
                         },
                     );
                 }
@@ -53,7 +57,7 @@ composer.on(
                         {
                             // @ts-ignore
                             reply_markup: oi,
-                            parse_mode: "HTML"
+                            parse_mode: "HTML",
                         },
                     );
                 }
@@ -71,6 +75,9 @@ composer.on(
                     TG_PR_MES(
                         TG_ERR_MES(error),
                     ),
+                    {
+                        parse_mode: "HTML",
+                    }
                 );
             }
         }
