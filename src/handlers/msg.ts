@@ -6,6 +6,35 @@ export const composer = new Composer();
 export default composer;
 
 export async function msgUpdate(ctx: Context) {
+    let reply_markup = undefined;
+    if (ctx?.msg?.chat?.is_direct_messages === true) {
+        reply_markup = {
+            inline_keyboard: [
+                [
+                    {
+                        text: "(string) Label text on the button",
+                        url: "https://core.telegram.org/bots/api-changelog#august-15-2025",
+                    },
+                ],
+                // [
+                //     {
+                //         text: "(string) Label text on the button",
+                //         switch_inline_query: "(string) Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted.",
+                //     },
+                //     {
+                //         text: "(string) Label text on the button",
+                //         switch_inline_query_current_chat: "(string) Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.",
+                //     },
+                // ],
+                [
+                    {
+                        text: "(string) Label text on the button",
+                        callback_data: "(Optional). Data associated with the callback button.",
+                    },
+                ],
+            ],
+        };
+    }
     let msgToSend = TG_MES_PR(ctx.update);
     if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
         while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
@@ -17,6 +46,7 @@ export async function msgUpdate(ctx: Context) {
                 TG_PR_MES(io),
                 {
                     parse_mode: "HTML",
+                    reply_markup: reply_markup,
                 }
             );
             msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
@@ -26,6 +56,7 @@ export async function msgUpdate(ctx: Context) {
         TG_PR_MES(msgToSend),
         {
             parse_mode: "HTML",
+            reply_markup: reply_markup,
         }
     );
 }
