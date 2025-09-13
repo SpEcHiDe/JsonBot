@@ -62,6 +62,20 @@ composer.on("inline_query", (ctx) => {
                     callback_data:
                         "(Optional). Data associated with the callback button.",
                 },
+                {
+                    text: "(string) Label text on the button",
+                    copy_text: {
+                        text: "The text to be copied to the clipboard; 1-256 characters",
+                    },
+                },
+            ],
+            [
+                {
+                    text: "(string) Label text on the button",
+                    login_url: {
+                        url: "https://www.example.com/",
+                    },
+                },
             ],
         ],
     };
