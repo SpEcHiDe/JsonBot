@@ -1,5 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MES_PR, TG_PR_MES } from "./../consts.ts";
+import { TG_MES_PR, TG_PR_MES, TG_MAX_MESSAGE_LENGTH } from "./../consts.ts";
 
 export const composer = new Composer();
 
@@ -16,15 +16,29 @@ composer.on("callback_query", async (ctx) => {
         console.log("Test 16");
         await ctx.editMessageText("We try to edit message to something else");
     }
-    return ctx.api.sendMessage(
-        ctx.callbackQuery.from.id,
-        TG_PR_MES(
-            TG_MES_PR(
-                ctx.update,
-            ),
-        ),
+    let reply_markup = undefined;
+    let msgToSend = TG_MES_PR(ctx.update);
+    if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+        while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+            const io: string = msgToSend.substring(
+                0,
+                TG_MAX_MESSAGE_LENGTH,
+            );
+            await ctx.reply(
+                TG_PR_MES(io),
+                {
+                    parse_mode: "HTML",
+                    reply_markup: reply_markup,
+                }
+            );
+            msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
+        }
+    }
+    return await ctx.reply(
+        TG_PR_MES(msgToSend),
         {
             parse_mode: "HTML",
+            reply_markup: reply_markup,
         }
     );
 });
