@@ -284,7 +284,7 @@ composer.on("inline_query", (ctx) => {
         });
         ikb.add({
             text: "🌀 🧲 ",
-            url: `https://example.com/?query=A B C D E F G H I J`,
+            url: `https://example.com/?query=A B C D E F-G --H I J`,
         });
         iqr.push(
             InlineQueryResultBuilder.article(
