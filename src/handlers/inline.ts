@@ -1,4 +1,4 @@
-import { Composer } from "grammy/mod.ts";
+import { Composer, InlineKeyboard, InlineQueryResultBuilder } from "grammy/mod.ts";
 import {
     A_STICKER_FILE_ID,
     AUDIO_DURATION,
@@ -249,7 +249,62 @@ composer.on("inline_query", (ctx) => {
             id: "139343",
             sticker_file_id: V_STICKER_FILE_ID,
         },
-    ]
+    ];
+
+    const mwe = [
+        "18D50D350E42A3F7A8CD5ABE171FE17B4B1DC04A",
+        "7EB473E682D6D8A6EA5F792F621E43CD6AA4C91B",
+        "C339D344F2CB4EC49B57423D9AED37A32B7D6DF6",
+        "45F3AE06D73CC590420733B5657EE6B153B85F20",
+        "B8ED532B7C83968B06885D1D439EE68F5DFFC5C7",
+        "C3D92CD75C771E6B405F54D7A43ACA65FE82B5B5",
+        "464B7B587E07070FFBA3DA4D68397BDC8DAAC029",
+        "EC193E01DCD111D5A5B39C1F6684695A355E18B5",
+        "39FFFF61CF16FD0681CEB90DF4A62DEDFFCFE15C",
+        "00B661AD7F58901E3DAB4A9BDC85234C9FFF2460",
+        "65B67A10E496F172C7F77CB7D1DA41C55CDD0F17",
+        "0624B3A5DE9F03771D1189AEB400FF05D901FA6F",
+        "FF4AAFBAEEA2D6EF0B3F32B96BCEE068FC65EE9F",
+        "60F5AEA83EA88E2645F907E78349DCD74D422318",
+        "918CBFCBCA79D3888A7D68268E1EA2542EB06F23",
+        "6FFEC7F5B9B94A600867E0D205B654E518D7C3C9",
+        "91FC76927E4DCFE54E2EC21660BCE5ED4E80D675",
+        "E91DDDB1B089BA0274A16BD3A2F46C2B9B042009",
+        "54A0CB15C2A5B7D8D806107B86F057A0D2BFF714",
+        "1CC763D0BE6682683E73F8754AFE0B0A7CEF0231",
+    ];
+    const botUserName = "usetgxbot";
+    const deepLinkType = "start";
+    for (const e of mwe) {
+        const ikb = new InlineKeyboard();
+        const invalidButtonUrl = `https://${botUserName}.t.me/?${deepLinkType}=${encodeURIComponent(e)}`
+        ikb.add({
+            text: "🧲 🌀",
+            url: invalidButtonUrl
+        });
+        iqr.push(
+            InlineQueryResultBuilder.article(
+                `${e}`,
+                e,
+                {
+                    reply_markup: ikb,
+                    // url: PermaUrl,
+                    description: e.split("").reverse().join(""),
+                    // thumbnail_url: thumbnail_url,
+                    // thumbnail_width: 60
+                    // thumbnail_height: 60
+                }
+            ).text(
+                e,
+                {
+                    parse_mode: "HTML",
+                    link_preview_options: {
+                        is_disabled: true
+                    }
+                }
+            )
+        );
+    }
 
     /**
      * TODO: https://grammy.dev/guide/inline-queries.html
