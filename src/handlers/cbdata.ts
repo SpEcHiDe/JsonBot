@@ -12,10 +12,10 @@ composer.on("callback_query", async (ctx) => {
     // (and we can only answer once)
     // so we don't always answer here.
     await ctx.answerCallbackQuery();
-    if (ctx.callbackQuery.data === "(Optional). Data associated with the callback button.") {
-        console.log("Test 16");
-        await ctx.editMessageText("We try to edit message to something else");
-    }
+    // if (ctx.callbackQuery.data === "(Optional). Data associated with the callback button.") {
+    //     console.log("Test 16");
+    //     await ctx.editMessageText("We try to edit message to something else");
+    // }
     let reply_markup = undefined;
     let msgToSend = TG_MES_PR(ctx.update);
     if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {

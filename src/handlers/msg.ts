@@ -75,6 +75,33 @@ export async function msgUpdate(ctx: Context) {
     );
 }
 
+composer.command("start", async (ctx, next) => {
+    const dl = ctx.match;
+    if (dl !== "tt26576161") {
+        return await next();
+    }
+    return await ctx.reply(
+        `<a href='https://www.imdb.com/title/tt26576161'>the-terminal-list-dark-wolf-2025</a>\n\nclick on appropriate button below 👇`,
+        {
+            parse_mode: "HTML",
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        {
+                            text: "Season 1",
+                            callback_data: "TEST-30191-3736793823-MWE"
+                        }
+                    ]
+                ]
+            },
+            link_preview_options: {
+                url: "https://cdn.subsource.net/posters/150526/e48f37af83bf34859c9a81c073c4f5a0-small.jpg",
+                show_above_text: true,
+            },
+        }
+    );
+});
+
 composer.on(
     // https://t.me/c/1493653006/107322
     [
