@@ -98,6 +98,9 @@ composer.command("start", async (ctx, next) => {
                 url: "https://cdn.subsource.net/posters/150526/e48f37af83bf34859c9a81c073c4f5a0-small.jpg",
                 show_above_text: true,
             },
+            reply_parameters: {
+                message_id: ctx.msgId,
+            },
         }
     );
 });
