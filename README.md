@@ -5,6 +5,8 @@
 Can be found on **Telegram Production Server** as
 👉 [@useTGxBot](https://useTGxBot.t.me)
 
+[![@useTGxBot MAU](https://tgbotmau.quoi.dev/api/bot/useTGxBot/mau/badge?style=flat "@useTGxBot MAU")](https://tgbotmau.quoi.dev/?bot=useTGxBot)
+
 ### OR
 
 Can be found on **Telegram Test Server** as
