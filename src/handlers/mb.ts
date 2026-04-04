@@ -6,7 +6,7 @@ export const composer = new Composer();
 
 export default composer;
 
-composer.on("managed_bot", (ctx) => {
+composer.on("managed_bot", async (ctx) => {
     const botToken = await ctx.api.getManagedBotToken(
         ctx.managedBot.bot.id
     );
@@ -25,7 +25,7 @@ composer.on("managed_bot", (ctx) => {
             // console.log(_e);
         }
     }
-    return ctx.api.sendMessage(
+    return await ctx.api.sendMessage(
         ctx.managedBot.user.id,
         TG_PR_MES(
             TG_MES_PR(
