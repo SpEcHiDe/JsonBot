@@ -7,11 +7,10 @@ export const composer = new Composer();
 export default composer;
 
 composer.on("managed_bot", async (ctx) => {
-    console.log(`L10: ${ctx.update}`);
     const botToken = await ctx.api.getManagedBotToken(
         ctx.managedBot.bot.id
     );
-    const bot = getBot(botToken, ctx.botConfig.botMode);
+    const bot = getBot(ctx.botConfig.botMode, botToken);
     if (bot) {
         try {
             // Make sure it is `https` not `http`!
