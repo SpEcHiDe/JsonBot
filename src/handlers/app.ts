@@ -1,19 +1,19 @@
 import { Composer } from "grammy/mod.ts";
 
-// import tgbte from "./tgbte.ts";
-import rm from "./yTestRm.ts";
-import rr from "./yTestRr.ts";
-import msg from "./msg.ts";
-import bc from "./bc.ts";
-import mr from "./mr.ts";
-import inline from "./inline.ts";
-import cir from "./cir.ts";
-import cbdata from "./cbdata.ts";
-import cm from "./cm.ts";
-import cjr from "./cjr.ts";
-import mb from "./mb.ts";
+import rm from "./command/rm.ts";
+import rr from "./command/rr.ts";
+import msg from "./update/msg.ts";
+import bc from "./update/bc.ts";
+import mr from "./update/mr.ts";
+import inline from "./update/inline.ts";
+import cir from "./update/cir.ts";
+import cbdata from "./update/cbdata.ts";
+import cm from "./update/cm.ts";
+import cjr from "./update/cjr.ts";
+import ppm from "./update/ppm.ts";
+import mb from "./update/mb.ts";
 
-import { MyContext } from "../bots.ts";
+import { MyContext } from "./../ctx.flavour.ts";
 
 export const composer = new Composer<MyContext>();
 
@@ -32,10 +32,8 @@ composer.use(mr);
 composer.use(inline);
 composer.use(cir);
 composer.use(cbdata);
-/** TODO: 
- * shipping_query
- * pre_checkout_query
- * purchased_paid_media
+composer.use(ppm);
+/** TODO:
  * poll
  * poll_answer
  */

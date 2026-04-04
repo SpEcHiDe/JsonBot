@@ -1,5 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, TG_PR_MES } from "./../consts.ts";
+import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, TG_PR_MES } from "./../../consts.ts";
 
 export const composer = new Composer();
 
@@ -7,14 +7,14 @@ export default composer;
 
 composer.on(
     [
-        "message_reaction",
-        "message_reaction_count",
+        "shipping_query",
+        "pre_checkout_query",
+        "purchased_paid_media",
     ],
     async (ctx) => {
         try {
-            const targetChat = ctx.messageReaction?.chat.id ??
-                ctx.messageReactionCount?.chat.id ?? undefined;
-            if (targetChat === undefined) {
+            const targetUser = ctx.from.id ?? undefined;
+            if (targetUser === undefined) {
                 return;
             }
             let msgToSend = TG_MES_PR(ctx.update);
@@ -25,7 +25,7 @@ composer.on(
                         TG_MAX_MESSAGE_LENGTH,
                     );
                     await ctx.api.sendMessage(
-                        targetChat,
+                        targetUser,
                         TG_PR_MES(io),
                         {
                             parse_mode: "HTML",
@@ -35,7 +35,7 @@ composer.on(
                 }
             }
             return await ctx.api.sendMessage(
-                targetChat,
+                targetUser,
                 TG_PR_MES(msgToSend),
                 {
                     parse_mode: "HTML",

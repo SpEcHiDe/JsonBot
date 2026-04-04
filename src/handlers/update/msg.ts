@@ -1,5 +1,5 @@
 import { Composer, Context } from "grammy/mod.ts";
-import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, TG_PR_MES } from "./../consts.ts";
+import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, TG_PR_MES } from "./../../consts.ts";
 
 export const composer = new Composer();
 

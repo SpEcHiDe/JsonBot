@@ -1,5 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MES_PR, TG_PR_MES, TG_ALLOWED_UPDATES, TG_ENV_S } from "./../consts.ts";
+import { TG_MES_PR, TG_PR_MES, TG_ALLOWED_UPDATES, TG_ENV_S } from "./../../consts.ts";
 import { getBot } from "../bots.ts";
 
 export const composer = new Composer();

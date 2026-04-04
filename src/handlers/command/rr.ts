@@ -1,6 +1,6 @@
 import { Composer } from "grammy/mod.ts";
 import { ReactionTypeCustomEmoji, ReactionTypeEmoji } from "grammy/types.ts";
-import { MR_INVALID_SYNTAX, TG_ERR_MES, TG_PR_MES } from "../consts.ts";
+import { TG_ERR_MES, TG_PR_MES } from "./../../consts.ts";
 
 export const composer = new Composer();
 

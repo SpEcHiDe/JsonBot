@@ -1,13 +1,10 @@
 import { Composer } from "grammy/mod.ts";
-import { Message } from "grammy/types.ts";
 import {
-    MR_INVALID_SYNTAX,
     STICKER_FILE_ID,
     TG_ERR_MES,
     TG_PR_MES,
-} from "../consts.ts";
-import { MyContext } from "../ctx.flavour.ts";
-// import { msgUpdate } from "./msg.ts";
+} from "./../../consts.ts";
+import { MyContext } from "./../../ctx.flavour.ts";
 
 export const composer = new Composer<MyContext>();
 

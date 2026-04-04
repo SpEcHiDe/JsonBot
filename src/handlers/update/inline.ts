@@ -27,7 +27,7 @@ import {
     VOICE_URL,
     YT_VIDEO_DURATION,
     YT_VIDEO_URL,
-} from "./../consts.ts";
+} from "./../../consts.ts";
 
 const composer = new Composer();
 
