@@ -7,6 +7,7 @@ export const composer = new Composer();
 export default composer;
 
 composer.on("managed_bot", async (ctx) => {
+    console.log(`L10: ${ctx.update}`);
     const botToken = await ctx.api.getManagedBotToken(
         ctx.managedBot.bot.id
     );

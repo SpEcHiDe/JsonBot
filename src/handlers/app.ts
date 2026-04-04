@@ -22,7 +22,6 @@ export const composer = new Composer<MyContext>();
 //     await next();
 // })
 
-// composer.use(tgbte);
 composer.use(rm);
 composer.use(rr);
 
