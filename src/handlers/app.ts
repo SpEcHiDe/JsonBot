@@ -11,6 +11,8 @@ import cir from "./cir.ts";
 import cbdata from "./cbdata.ts";
 import cm from "./cm.ts";
 import cjr from "./cjr.ts";
+import mb from "./mb.ts";
+
 import { MyContext } from "../bots.ts";
 
 export const composer = new Composer<MyContext>();
@@ -23,16 +25,23 @@ export const composer = new Composer<MyContext>();
 // composer.use(tgbte);
 composer.use(rm);
 composer.use(rr);
+
 composer.use(msg);
 composer.use(bc);
 composer.use(mr);
 composer.use(inline);
 composer.use(cir);
 composer.use(cbdata);
-// TODO: 4
+/** TODO: 
+ * shipping_query
+ * pre_checkout_query
+ * purchased_paid_media
+ * poll
+ * poll_answer
+ */
 composer.use(cm);
 composer.use(cjr);
-// TODO: 2
+composer.use(mb);
 
 composer.use(
     (ctx) => console.log("UnHandled update", JSON.stringify(ctx))

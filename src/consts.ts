@@ -56,6 +56,7 @@ export const TG_ALLOWED_UPDATES: Array<string> = [
     "callback_query",
     "shipping_query",
     "pre_checkout_query",
+    "purchased_paid_media",
     "poll",
     "poll_answer",
     "my_chat_member",
@@ -63,6 +64,7 @@ export const TG_ALLOWED_UPDATES: Array<string> = [
     "chat_join_request",
     "chat_boost",
     "removed_chat_boost",
+    "managed_bot",
 ];
 export const TG_ENV_S = Deno.env.toObject();
 const KW_TG_ERR = (msg: string): string => {
