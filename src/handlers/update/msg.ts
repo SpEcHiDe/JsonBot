@@ -108,6 +108,19 @@ composer.command("start", async (ctx, next) => {
 });
 
 composer.on(
+    [
+        "message",
+        "channel_post"
+    ],
+    async (ctx, next) => {
+        if ((ctx.msg.chat.title ?? "")?.indexOf("[DELETE]") > -1) {
+            return await ctx.deleteMessage();
+        }
+        return await next();
+    }
+);
+
+composer.on(
     // https://t.me/c/1493653006/107322
     [
         "message",
