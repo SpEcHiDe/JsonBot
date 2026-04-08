@@ -1,7 +1,7 @@
 {
     "tasks": {
-        "start": "deno run --allow-net --allow-read --allow-env start.ts",
-        "serverless": "deno run --allow-net --allow-read --allow-env start.ts"
+        "start": "deno run --allow-net --allow-read --allow-env --allow-import start.ts",
+        "serverless": "deno run --allow-net --allow-read --allow-env --allow-import start.ts"
     },
     "imports": {
         "std/": "https://deno.land/std@0.224.0/",
