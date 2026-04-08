@@ -27,11 +27,11 @@ composer.on(
             //         custom_emoji_id: io,
             //     };
             // } catch (_) {
-                oi = {
-                    type: "emoji",
-                    // @ts-ignore
-                    emoji: io,
-                };
+            oi = {
+                type: "emoji",
+                // @ts-ignore
+                emoji: io,
+            };
             // }
             if (oi !== undefined) {
                 try {
@@ -60,7 +60,7 @@ composer.on(
                     ),
                     {
                         parse_mode: "HTML",
-                    }
+                    },
                 );
             }
         }

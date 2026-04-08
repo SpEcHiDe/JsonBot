@@ -29,12 +29,14 @@ export async function msgUpdate(ctx: Context) {
                 [
                     {
                         text: "(string) Label text on the button",
-                        callback_data: "(Optional). Data associated with the callback button.",
+                        callback_data:
+                            "(Optional). Data associated with the callback button.",
                     },
                     {
                         text: "(string) Label text on the button",
                         copy_text: {
-                            text: "The text to be copied to the clipboard; 1-256 characters",
+                            text:
+                                "The text to be copied to the clipboard; 1-256 characters",
                         },
                     },
                 ],
@@ -61,7 +63,7 @@ export async function msgUpdate(ctx: Context) {
                 {
                     parse_mode: "HTML",
                     reply_markup: reply_markup,
-                }
+                },
             );
             msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
         }
@@ -71,7 +73,7 @@ export async function msgUpdate(ctx: Context) {
         {
             parse_mode: "HTML",
             reply_markup: reply_markup,
-        }
+        },
     );
 }
 
@@ -89,10 +91,10 @@ composer.command("start", async (ctx, next) => {
                     [
                         {
                             text: "Season 1",
-                            callback_data: "TEST-30191-3736793823-MWE"
-                        }
-                    ]
-                ]
+                            callback_data: "TEST-30191-3736793823-MWE",
+                        },
+                    ],
+                ],
             },
             link_preview_options: {
                 url: "https://cdn.subsource.net/posters/150526/e48f37af83bf34859c9a81c073c4f5a0-small.jpg",
@@ -101,7 +103,7 @@ composer.command("start", async (ctx, next) => {
             reply_parameters: {
                 message_id: ctx.msgId,
             },
-        }
+        },
     );
 });
 

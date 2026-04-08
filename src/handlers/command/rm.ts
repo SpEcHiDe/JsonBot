@@ -1,9 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import {
-    STICKER_FILE_ID,
-    TG_ERR_MES,
-    TG_PR_MES,
-} from "./../../consts.ts";
+import { STICKER_FILE_ID, TG_ERR_MES, TG_PR_MES } from "./../../consts.ts";
 import { MyContext } from "./../../ctx.flavour.ts";
 
 export const composer = new Composer<MyContext>();
@@ -33,7 +29,7 @@ composer.on(
                     ),
                     {
                         parse_mode: "HTML",
-                    }
+                    },
                 );
             }
             try {
@@ -47,8 +43,7 @@ composer.on(
                             parse_mode: "HTML",
                         },
                     );
-                }
-                else {
+                } else {
                     ishow = await ctx.reply(
                         `<code>${STICKER_FILE_ID}</code>`,
                         {
@@ -58,7 +53,7 @@ composer.on(
                         },
                     );
                 }
-                
+
                 // https://t.me/c/1493653006/116801
                 // return await msgUpdate(
                 //     {
@@ -74,7 +69,7 @@ composer.on(
                     ),
                     {
                         parse_mode: "HTML",
-                    }
+                    },
                 );
             }
         }

@@ -15,6 +15,6 @@ composer.on("chosen_inline_result", (ctx) => {
         ),
         {
             parse_mode: "HTML",
-        }
+        },
     );
 });

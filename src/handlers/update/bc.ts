@@ -15,6 +15,6 @@ composer.on("business_connection", (ctx) => {
         ),
         {
             parse_mode: "HTML",
-        }
+        },
     );
 });

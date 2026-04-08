@@ -41,5 +41,5 @@ composer.use(cjr);
 composer.use(mb);
 
 composer.use(
-    (ctx) => console.log("UnHandled update", JSON.stringify(ctx))
+    (ctx) => console.log("UnHandled update", JSON.stringify(ctx)),
 );

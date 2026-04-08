@@ -1,4 +1,8 @@
-import { Composer, InlineKeyboard, InlineQueryResultBuilder } from "grammy/mod.ts";
+import {
+    Composer,
+    InlineKeyboard,
+    InlineQueryResultBuilder,
+} from "grammy/mod.ts";
 import {
     A_STICKER_FILE_ID,
     AUDIO_DURATION,
@@ -65,7 +69,8 @@ composer.on("inline_query", (ctx) => {
                 {
                     text: "(string) Label text on the button",
                     copy_text: {
-                        text: "The text to be copied to the clipboard; 1-256 characters",
+                        text:
+                            "The text to be copied to the clipboard; 1-256 characters",
                     },
                 },
             ],
@@ -97,7 +102,7 @@ composer.on("inline_query", (ctx) => {
     const msgCaption = TG_PR_MES(
         msgToSend.substring(0, TG_MAX_MESSAGE_LENGTH),
     );
-    
+
     const iqr = [
         {
             type: "article",
@@ -107,8 +112,7 @@ composer.on("inline_query", (ctx) => {
             reply_markup: reply_markup,
             url: STICKER_URL,
             hide_url: true,
-            description:
-                "(string) Optional. Short description of the result",
+            description: "(string) Optional. Short description of the result",
             thumbnail_url: SMAII_STICKER_URL,
             thumbnail_width: SMAII_STICKER_WIDTH,
             thumbnail_height: SMAII_STICKER_HEIGHT,
@@ -126,8 +130,7 @@ composer.on("inline_query", (ctx) => {
             reply_markup: reply_markup,
             url: STICKER_URL,
             hide_url: true,
-            description:
-                "(string) Optional. Short description of the result",
+            description: "(string) Optional. Short description of the result",
             thumbnail_url: SMAII_STICKER_URL,
             thumbnail_width: SMAII_STICKER_WIDTH,
             thumbnail_height: SMAII_STICKER_HEIGHT,
@@ -140,8 +143,7 @@ composer.on("inline_query", (ctx) => {
             photo_width: STICKER_WIDTH,
             photo_height: STICKER_HEIGHT,
             title: "(string) Title of the result",
-            description:
-                "(string) Optional. Short description of the result",
+            description: "(string) Optional. Short description of the result",
             caption: msgCaption,
             parse_mode: "HTML",
             reply_markup: reply_markup,
@@ -189,8 +191,7 @@ composer.on("inline_query", (ctx) => {
             video_width: 0,
             video_height: 0,
             video_duration: YT_VIDEO_DURATION,
-            description:
-                "(string) Optional. Short description of the result",
+            description: "(string) Optional. Short description of the result",
             reply_markup: reply_markup,
             // input_message_content:
         },
@@ -206,8 +207,7 @@ composer.on("inline_query", (ctx) => {
             video_width: 0,
             video_height: 0,
             video_duration: YT_VIDEO_DURATION,
-            description:
-                "(string) Optional. Short description of the result",
+            description: "(string) Optional. Short description of the result",
             reply_markup: reply_markup,
             input_message_content: inputTextMessageContent,
         },

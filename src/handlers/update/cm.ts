@@ -30,7 +30,7 @@ composer.on(
                         TG_PR_MES(io),
                         {
                             parse_mode: "HTML",
-                        }
+                        },
                     );
                     msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
                 }
@@ -40,7 +40,7 @@ composer.on(
                 TG_PR_MES(msgToSend),
                 {
                     parse_mode: "HTML",
-                }
+                },
             );
         } catch (_) {
             // TODO: figure out a better logik

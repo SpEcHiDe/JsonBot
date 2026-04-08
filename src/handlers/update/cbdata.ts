@@ -1,5 +1,5 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MES_PR, TG_PR_MES, TG_MAX_MESSAGE_LENGTH } from "./../../consts.ts";
+import { TG_MAX_MESSAGE_LENGTH, TG_MES_PR, TG_PR_MES } from "./../../consts.ts";
 
 export const composer = new Composer();
 
@@ -25,7 +25,7 @@ composer.on("callback_query", async (ctx) => {
                 {
                     parse_mode: "HTML",
                     reply_markup: reply_markup,
-                }
+                },
             );
             msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
         }
@@ -35,6 +35,6 @@ composer.on("callback_query", async (ctx) => {
         {
             parse_mode: "HTML",
             reply_markup: reply_markup,
-        }
+        },
     );
 });

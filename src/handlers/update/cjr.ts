@@ -15,6 +15,6 @@ composer.on("chat_join_request", (ctx) => {
         ),
         {
             parse_mode: "HTML",
-        }
+        },
     );
 });

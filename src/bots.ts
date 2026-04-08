@@ -28,21 +28,21 @@ export function getBot(mode: string, token: string) {
             });
             // https://t.me/grammyjs/116198
             bot.use(async (ctx, next): Promise<void> => {
-				// take time before
-				// const before = Date.now(); // milliseconds
-				// set token attribute
-				ctx.botConfig = {
+                // take time before
+                // const before = Date.now(); // milliseconds
+                // set token attribute
+                ctx.botConfig = {
                     // TODO
-					botToken: token,
-					botMode: mode,
-				};
-				// invoke downstream middleware
-				await next(); // make sure to `await`!
-				// take time after
-				// const after = Date.now(); // milliseconds
-				// log difference
-				// console.log(`Response time: ${after - before} ms`);
-			});
+                    botToken: token,
+                    botMode: mode,
+                };
+                // invoke downstream middleware
+                await next(); // make sure to `await`!
+                // take time after
+                // const after = Date.now(); // milliseconds
+                // log difference
+                // console.log(`Response time: ${after - before} ms`);
+            });
             // https://grammy.dev/guide/errors.html#catching-errors
             bot.catch((err) => {
                 const ctx = err.ctx;

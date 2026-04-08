@@ -1,5 +1,10 @@
 import { Composer } from "grammy/mod.ts";
-import { TG_MES_PR, TG_PR_MES, TG_ALLOWED_UPDATES, TG_ENV_S } from "./../../consts.ts";
+import {
+    TG_ALLOWED_UPDATES,
+    TG_ENV_S,
+    TG_MES_PR,
+    TG_PR_MES,
+} from "./../../consts.ts";
 import { getBot } from "./../../bots.ts";
 
 export const composer = new Composer();
@@ -8,7 +13,7 @@ export default composer;
 
 composer.on("managed_bot", async (ctx) => {
     const botToken = await ctx.api.getManagedBotToken(
-        ctx.managedBot.bot.id
+        ctx.managedBot.bot.id,
     );
     const bot = getBot(ctx.botConfig.botMode, botToken);
     if (bot) {
@@ -34,6 +39,6 @@ composer.on("managed_bot", async (ctx) => {
         ),
         {
             parse_mode: "HTML",
-        }
+        },
     );
 });
