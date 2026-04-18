@@ -20,7 +20,7 @@ composer.on("managed_bot", async (ctx) => {
         try {
             // Make sure it is `https` not `http`!
             await bot.api.setWebhook(
-                `${TG_ENV_S.URL}/${botToken}`,
+                `${TG_ENV_S.URL}/${ctx.botConfig.botMode}/${botToken}`,
                 {
                     drop_pending_updates: true,
                     allowed_updates: TG_ALLOWED_UPDATES,
