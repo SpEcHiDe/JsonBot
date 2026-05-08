@@ -17,10 +17,10 @@ import { MyContext } from "./../ctx.flavour.ts";
 
 export const composer = new Composer<MyContext>();
 
-// composer.use(async (ctx, next) => {
-//     console.log(ctx.update);
-//     await next();
-// })
+composer.use(async (ctx, next) => {
+    console.log(ctx.update);
+    await next();
+});
 
 composer.use(rm);
 composer.use(rr);
