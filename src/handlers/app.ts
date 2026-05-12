@@ -47,6 +47,53 @@ composer.use(
     async (ctx) => {
         if (ctx.update.guest_message) {
             const GM = ctx.update.guest_message;
+
+            //
+            const reply_markup = {
+                inline_keyboard: [
+                    [
+                        {
+                            text: "(string) Label text on the button",
+                            url: "https://iamidiotareyoutoo.com",
+                        },
+                    ],
+                    [
+                        {
+                            text: "(string) Label text on the button",
+                            switch_inline_query:
+                                "(string) Optional. If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. May be empty, in which case just the bot's username will be inserted.",
+                        },
+                        {
+                            text: "(string) Label text on the button",
+                            switch_inline_query_current_chat:
+                                "(string) Optional. If set, pressing the button will insert the bot's username and the specified inline query in the current chat's input field. May be empty, in which case only the bot's username will be inserted.",
+                        },
+                    ],
+                    [
+                        {
+                            text: "(string) Label text on the button",
+                            callback_data:
+                                "(Optional). Data associated with the callback button.",
+                        },
+                        {
+                            text: "(string) Label text on the button",
+                            copy_text: {
+                                text:
+                                    "The text to be copied to the clipboard; 1-256 characters",
+                            },
+                        },
+                    ],
+                    [
+                        {
+                            text: "(string) Label text on the button",
+                            login_url: {
+                                url: "https://www.example.com/",
+                            },
+                        },
+                    ],
+                ],
+            };
+
             const guest_query_id = GM.guest_query_id;
             const msgToSend = TG_MES_PR(ctx.update);
             if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
@@ -67,7 +114,7 @@ composer.use(
                         id: "1",
                         title: "(string) Title of the result",
                         document_file_id: TM.document.file_id,
-                        // reply_markup: reply_markup,
+                        reply_markup: reply_markup,
                         description:
                             "(string) Optional. Short description of the result",
                     },
@@ -86,7 +133,7 @@ composer.use(
                         id: "1",
                         title: "(string) Title of the result",
                         input_message_content: input_text_message_content,
-                        // reply_markup: reply_markup,
+                        reply_markup: reply_markup,
                         url: "",
                         hide_url: true,
                         description:
