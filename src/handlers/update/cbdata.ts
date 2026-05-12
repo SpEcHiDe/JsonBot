@@ -17,7 +17,7 @@ composer.on("callback_query", async (ctx) => {
     if (cb.inline_message_id) {
         await ctx.answerCallbackQuery({
             text: TG_PR_MES(
-                msgToSend.substring(0, 199)
+                msgToSend.substring(0, 199),
             ),
             show_alert: true,
         });
