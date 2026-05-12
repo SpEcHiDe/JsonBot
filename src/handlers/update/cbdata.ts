@@ -14,27 +14,31 @@ composer.on("callback_query", async (ctx) => {
     await ctx.answerCallbackQuery();
     let reply_markup = undefined;
     let msgToSend = TG_MES_PR(ctx.update);
-    if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
-        while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
-            const io: string = msgToSend.substring(
-                0,
-                TG_MAX_MESSAGE_LENGTH,
-            );
-            await ctx.reply(
-                TG_PR_MES(io),
-                {
-                    parse_mode: "HTML",
-                    reply_markup: reply_markup,
-                },
-            );
-            msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
+    const cb = ctx.callbackQuery;
+    if (cb.inline_message_id) {
+    } else {
+        if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+            while (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
+                const io: string = msgToSend.substring(
+                    0,
+                    TG_MAX_MESSAGE_LENGTH,
+                );
+                await ctx.reply(
+                    TG_PR_MES(io),
+                    {
+                        parse_mode: "HTML",
+                        reply_markup: reply_markup,
+                    },
+                );
+                msgToSend = msgToSend.substring(TG_MAX_MESSAGE_LENGTH);
+            }
         }
+        return await ctx.reply(
+            TG_PR_MES(msgToSend),
+            {
+                parse_mode: "HTML",
+                reply_markup: reply_markup,
+            },
+        );
     }
-    return await ctx.reply(
-        TG_PR_MES(msgToSend),
-        {
-            parse_mode: "HTML",
-            reply_markup: reply_markup,
-        },
-    );
 });
