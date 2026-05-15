@@ -74,14 +74,14 @@ composer.on("inline_query", (ctx) => {
                     },
                 },
             ],
-            [
-                {
-                    text: "(string) Label text on the button",
-                    login_url: {
-                        url: "https://www.example.com/",
-                    },
-                },
-            ],
+            // [
+            //     {
+            //         text: "(string) Label text on the button",
+            //         login_url: {
+            //             url: "https://www.example.com/",
+            //         },
+            //     },
+            // ],
         ],
     };
     //

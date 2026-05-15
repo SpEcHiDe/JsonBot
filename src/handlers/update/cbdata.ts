@@ -15,10 +15,8 @@ composer.on("callback_query", async (ctx) => {
     let msgToSend = TG_MES_PR(ctx.update);
     const cb = ctx.callbackQuery;
     if (cb.inline_message_id) {
-        await ctx.answerCallbackQuery({
-            text: msgToSend.substring(0, 199),
-            show_alert: true,
-        });
+        await ctx.answerCallbackQuery();
+        // TODO: how to handle larger files?
     } else {
         await ctx.answerCallbackQuery();
         if (msgToSend.length > TG_MAX_MESSAGE_LENGTH) {
