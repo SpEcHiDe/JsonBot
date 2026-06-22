@@ -15,6 +15,20 @@ composer.on(
     async (ctx, next) => {
         if (
             ctx?.msg?.text !== undefined &&
+            ctx.msg.text.startsWith("/et ")
+        ) {
+            const io = ctx.msg.text.substring(4).trim();
+            await ctx.api.editMessageText(
+                ctx.msg.chat.id, ctx.msg.reply_to_message.message_id,
+                io,
+                {
+                    business_connection_id: ctx.msg.business_connection_id,
+                }
+            );
+            return undefined;
+        }
+        if (
+            ctx?.msg?.text !== undefined &&
             ctx.msg.text.startsWith("/rm ")
         ) {
             const io = ctx.msg.text.substring(4).trim();
