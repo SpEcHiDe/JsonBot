@@ -13,6 +13,7 @@ import cm from "./update/cm.ts";
 import cjr from "./update/cjr.ts";
 import ppm from "./update/ppm.ts";
 import mb from "./update/mb.ts";
+import iqi from "./command/iq.ts";
 
 import { MyContext } from "./../ctx.flavour.ts";
 
@@ -25,6 +26,7 @@ export const composer = new Composer<MyContext>();
 
 composer.use(rm);
 composer.use(rr);
+composer.use(iqi);
 
 composer.use(msg);
 composer.use(bc);

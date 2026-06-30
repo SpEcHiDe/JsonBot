@@ -19,11 +19,12 @@ composer.on(
         ) {
             const io = ctx.msg.text.substring(4).trim();
             await ctx.api.editMessageText(
-                ctx.msg.chat.id, ctx.msg.reply_to_message.message_id,
+                ctx.msg.chat.id,
+                ctx.msg.reply_to_message.message_id,
                 io,
                 {
                     business_connection_id: ctx.msg.business_connection_id,
-                }
+                },
             );
             return undefined;
         }
